@@ -48,48 +48,6 @@
   ],
   "popups": [
     {
-      "id": "minumsa-todaycute-2026",
-      "title": "문장 너머의 세계 — 용산",
-      "ip": [
-        "오늘의귀여움"
-      ],
-      "brand": "민음사",
-      "category": "publish",
-      "type": "팝업스토어",
-      "country": "KR",
-      "region": "서울 용산",
-      "venue": "용산 아이파크몰 리빙파크 3F 더 팝업존",
-      "startDate": "2026-08-11",
-      "endDate": "2026-08-26",
-      "hours": "10:30 ~ 21:30 (1시간 간격 회차 운영)",
-      "reservation": "카카오톡 사전예약 / 현장예약",
-      "summary": "민음사 도서와 캐릭터 브랜드 '오늘의귀여움'이 만난 팝업. 세계문학전집을 캐릭터 일러스트로 리커버한 한정판이 화제가 됐습니다.",
-      "highlights": [
-        "캐릭터 리커버 세계문학전집 (자기만의 방·폭풍의 언덕·오만과 편견 등)",
-        "렌티큘러 책갈피 가챠 / 부실감자 세문전 키링 가챠",
-        "스마트폰 케이스·그립톡·도서 기록 세트·보드게임"
-      ],
-      "sources": [
-        {
-          "title": "팝가 - 민음사 X 오늘의귀여움 팝업",
-          "url": "https://popga.co.kr/popup/8476"
-        },
-        {
-          "title": "파이낸스투데이 - 민음사X오늘의 귀여움",
-          "url": "https://www.fntoday.co.kr/news/articleView.html?idxno=387351"
-        }
-      ],
-      "areas": [
-        "용산"
-      ],
-      "brandDomain": "minumsa.com",
-      "note": "8월 13일부터 종료일까지 21시 30분 이후 워크인 입장 불가였습니다.",
-      "official": {
-        "label": "공식 예약 페이지 (카카오)",
-        "url": "https://booking.kakao.com/detail/ticketStore/307413"
-      }
-    },
-    {
       "id": "minumsa-todaycute-busan-2026",
       "title": "문장 너머의 세계: 몰입의 바다 — 부산",
       "ip": [
@@ -132,120 +90,8 @@
       "official": {
         "label": "공식 인스타그램 (포스터·사진)",
         "url": "https://www.instagram.com/minumsa_books/"
-      }
-    },
-    {
-      "id": "kleague-sanrio-2026",
-      "title": "2026 K리그 X 산리오 썸머캠프",
-      "ip": [
-        "산리오캐릭터즈"
-      ],
-      "brand": "K리그 (한국프로축구연맹)",
-      "category": "sports",
-      "type": "팝업스토어",
-      "country": "KR",
-      "region": "서울 영등포",
-      "venue": "더현대 서울 지하 2층 대행사장",
-      "startDate": "2026-07-31",
-      "endDate": "2026-08-09",
-      "hours": "월~목 10:30~20:00 / 금~일 10:30~20:30",
-      "reservation": "현장 방문",
-      "summary": "헬로키티 등 산리오 캐릭터가 K리그 유니폼을 입고 등장한 10일간의 콜라보 팝업.",
-      "highlights": [
-        "국내 첫 산리오 트레이딩 카드 '2026 K리그×산리오캐릭터즈 컬렉션 카드'",
-        "구단별 콜라보 굿즈",
-        "동부산점 연계 운영"
-      ],
-      "sources": [
-        {
-          "title": "K리그 공식 - 썸머캠프 팝업스토어 안내",
-          "url": "https://www.kleague.com/news_view.do?seq=95730&category=notice"
-        },
-        {
-          "title": "이데일리 - 프로축구연맹, 산리오와 손잡고 팝업 오픈",
-          "url": "https://edaily.co.kr/News/Read?mediaCodeNo=257&newsId=04365686645517144"
-        }
-      ],
-      "areas": [
-        "여의도"
-      ],
-      "brandDomain": "kleague.com",
-      "official": {
-        "label": "K리그 공식 사이트",
-        "url": "https://www.kleague.com/"
-      }
-    },
-    {
-      "id": "shinchan-yongsan-2026",
-      "title": "짱구는 못말려 〈떡잎마을 주민 대축제〉 - 용산",
-      "ip": [
-        "짱구는 못말려"
-      ],
-      "brand": "아이파크몰",
-      "category": "culture",
-      "type": "팝업스토어",
-      "country": "KR",
-      "region": "서울 용산",
-      "venue": "용산 아이파크몰 리빙파크 3F",
-      "startDate": "2026-07-30",
-      "endDate": "2026-08-10",
-      "hours": "매일 10:30 ~ 22:00",
-      "reservation": "현장 방문",
-      "summary": "떡잎마을 축제 콘셉트로 꾸며진 짱구 대형 팝업. 포토존과 한정 굿즈 중심으로 운영됐습니다.",
-      "highlights": [
-        "떡잎마을 축제 테마 포토존",
-        "한정 굿즈 & 랜덤 상품"
-      ],
-      "sources": [
-        {
-          "title": "팝가 - 짱구 팝업스토어 일정 안내",
-          "url": "https://popga.co.kr/content/magazine/358"
-        }
-      ],
-      "areas": [
-        "용산"
-      ],
-      "brandDomain": "iparkmall.co.kr",
-      "official": {
-        "label": "공식 인스타그램 (포스터·사진)",
-        "url": "https://www.instagram.com/iparkmall/"
-      }
-    },
-    {
-      "id": "shinchan-cheongju-2026",
-      "title": "짱구는 못말려 〈떡잎마을 주민 대축제〉 - 청주",
-      "ip": [
-        "짱구는 못말려"
-      ],
-      "brand": "커넥트현대 청주",
-      "category": "culture",
-      "type": "팝업스토어",
-      "country": "KR",
-      "region": "충북 청주",
-      "venue": "청주 커넥트현대 1F 이벤트플라자",
-      "startDate": "2026-08-28",
-      "endDate": "2026-09-06",
-      "hours": "몰 운영시간에 준함",
-      "reservation": "현장 방문",
-      "summary": "용산에 이어 지방으로 확대 운영된 짱구 팝업 투어.",
-      "highlights": [
-        "지역 순회 운영",
-        "한정 굿즈"
-      ],
-      "sources": [
-        {
-          "title": "팝가 - 짱구 팝업스토어 일정 안내",
-          "url": "https://popga.co.kr/content/magazine/358"
-        }
-      ],
-      "areas": [
-        "청주"
-      ],
-      "brandDomain": "ehyundai.com",
-      "official": {
-        "label": "커넥트현대 청주 지점 안내",
-        "url": "https://www.ehyundai.com/mobile/branch/DP/branch.do?branchType=10&branchCd=B00179000"
-      }
+      },
+      "ipOrigin": "KR"
     },
     {
       "id": "angelinus-bbanggomi-seokchon-2026",
@@ -286,7 +132,8 @@
       "official": {
         "label": "공식 인스타그램 (포스터·사진)",
         "url": "https://www.instagram.com/angelinus_coffee/"
-      }
+      },
+      "ipOrigin": "KR"
     },
     {
       "id": "angelinus-bbanggomi-jamsil-2026",
@@ -321,7 +168,8 @@
       "official": {
         "label": "공식 인스타그램 (포스터·사진)",
         "url": "https://www.instagram.com/angelinus_coffee/"
-      }
+      },
+      "ipOrigin": "KR"
     },
     {
       "id": "aot-final-hongdae-2026",
@@ -358,283 +206,8 @@
         "label": "공식 예매 페이지 (인터파크)",
         "url": "https://tickets.interpark.com/goods/26007894"
       },
-      "note": "자료마다 정보가 다릅니다. 시작일은 6월 19일 또는 6월 22일, 운영시간은 12:00~19:00 또는 11:00~19:00(마지막 입장 18:20)로 엇갈립니다. 원본 전시와 앙코르(Again) 회차가 섞여 있는 것으로 보입니다. 방문 전 예매 페이지에서 확인하세요."
-    },
-    {
-      "id": "sandbox-cvs-2026",
-      "title": "샌박편의점",
-      "ip": [
-        "샌드박스 크리에이터 IP"
-      ],
-      "brand": "샌드박스 네트워크 × 더현대 서울",
-      "category": "cvs",
-      "type": "팝업스토어",
-      "country": "KR",
-      "region": "서울 영등포",
-      "venue": "더현대 서울 지하 2층",
-      "startDate": "2026-07-02",
-      "endDate": "2026-07-15",
-      "hours": "몰 운영시간에 준함",
-      "reservation": "현장 방문",
-      "summary": "편의점을 통째로 옮겨온 콘셉트의 크리에이터 IP 팝업. 한정 굿즈와 포토존으로 팬들을 모았습니다.",
-      "highlights": [
-        "편의점 콘셉트 공간 연출",
-        "크리에이터 한정 굿즈",
-        "포토존"
-      ],
-      "sources": [
-        {
-          "title": "팝가 - 7월 더현대 서울 팝업스토어 총정리",
-          "url": "https://popga.co.kr/content/magazine/337"
-        }
-      ],
-      "areas": [
-        "여의도"
-      ],
-      "brandDomain": "ehyundai.com",
-      "official": {
-        "label": "더현대 서울 공식 사이트",
-        "url": "https://thehyundaiseoul.ehyundai.com/"
-      }
-    },
-    {
-      "id": "angyeongmandu-2026",
-      "title": "안경만두 팝업스토어",
-      "ip": [
-        "안경만두"
-      ],
-      "brand": "더현대 서울",
-      "category": "culture",
-      "type": "팝업스토어",
-      "country": "KR",
-      "region": "서울 영등포",
-      "venue": "더현대 서울 지하 2층 아이코닉 팝업존",
-      "startDate": "2026-07-09",
-      "endDate": "2026-07-22",
-      "hours": "몰 운영시간에 준함",
-      "reservation": "현장 방문",
-      "summary": "SNS에서 인기를 얻은 캐릭터 '안경만두'의 첫 대형 팝업스토어.",
-      "highlights": [
-        "첫 대형 팝업",
-        "오리지널 굿즈 라인업"
-      ],
-      "sources": [
-        {
-          "title": "팝가 - 7월 더현대 서울 팝업스토어 총정리",
-          "url": "https://popga.co.kr/content/magazine/337"
-        }
-      ],
-      "areas": [
-        "여의도"
-      ],
-      "brandDomain": "ehyundai.com",
-      "official": {
-        "label": "더현대 서울 공식 사이트",
-        "url": "https://thehyundaiseoul.ehyundai.com/"
-      }
-    },
-    {
-      "id": "breadbarbershop-timesquare-2026",
-      "title": "2026 빵빵 페스티벌",
-      "ip": [
-        "브레드이발소"
-      ],
-      "brand": "타임스퀘어",
-      "category": "cafe",
-      "type": "팝업스토어",
-      "country": "KR",
-      "region": "서울 영등포",
-      "venue": "영등포 타임스퀘어",
-      "startDate": "2026-06-03",
-      "endDate": "2026-06-21",
-      "hours": "몰 운영시간에 준함",
-      "reservation": "현장 방문",
-      "summary": "애니메이션 '브레드이발소'와 타임스퀘어가 협업한 베이커리 축제형 팝업. 전국 베이커리 명소 6개 브랜드가 함께 참여했습니다.",
-      "highlights": [
-        "전국 베이커리 6개 브랜드 참여",
-        "한정판 굿즈",
-        "참여형 이벤트"
-      ],
-      "sources": [
-        {
-          "title": "서울신문 - 브레드이발소, 타임스퀘어와 콜라보",
-          "url": "https://m.seoul.co.kr/news/2026/06/02/20260602500159"
-        }
-      ],
-      "areas": [
-        "영등포"
-      ],
-      "brandDomain": "timessquare.co.kr",
-      "official": {
-        "label": "타임스퀘어 공식 인스타그램",
-        "url": "https://www.instagram.com/timessquare.mall/"
-      }
-    },
-    {
-      "id": "emart24-breadbarbershop-2026",
-      "title": "이마트24 × 브레드이발소 콜라보 상품 6종",
-      "ip": [
-        "브레드이발소"
-      ],
-      "brand": "이마트24",
-      "category": "cvs",
-      "type": "상품 콜라보",
-      "country": "KR",
-      "region": "전국",
-      "venue": "이마트24 전국 매장",
-      "startDate": "2026-08-05",
-      "endDate": "2026-08-31",
-      "hours": "",
-      "reservation": "매장 구매",
-      "summary": "편의점에서 만나는 브레드이발소 콜라보 먹거리 6종. 8월 5일 갈릭에그햄치즈 샌드위치를 시작으로 8일까지 순차 출시해 라인업을 완성했습니다.",
-      "highlights": [
-        "콜라보 먹거리 6종 (샌드위치·초코브라우니·우유크림도넛 등)",
-        "간편결제(카카오페이·네이버페이·토스페이) 시 30% 할인",
-        "스탬프 3개 이상 응모 → 301명 경품 (오크밸리 브레드이발소룸 숙박권, 비치볼 등)"
-      ],
-      "sources": [
-        {
-          "title": "신세계그룹 뉴스룸 - 이마트24 브레드이발소 콜라보 6종",
-          "url": "https://www.shinsegaegroupnewsroom.com/emart24-collaboration-launch-4/"
-        },
-        {
-          "title": "뉴스1 - 협업 상품 6종 출시, 301명 경품 증정",
-          "url": "https://www.news1.kr/industry/distribution/6249391"
-        }
-      ],
-      "areas": [
-        "전국·온라인"
-      ],
-      "brandDomain": "emart24.co.kr",
-      "official": {
-        "label": "이마트24 공식 페이스북",
-        "url": "https://www.facebook.com/emart24.official/"
-      }
-    },
-    {
-      "id": "atte-pompompurin-2026",
-      "title": "아떼 × 폼폼푸린 팝업",
-      "ip": [
-        "산리오캐릭터즈",
-        "폼폼푸린"
-      ],
-      "brand": "아떼 (Atté)",
-      "category": "beauty",
-      "type": "팝업스토어",
-      "country": "KR",
-      "region": "서울 성동·강남",
-      "venue": "올리브영 N성수 / 올리브영 센트럴 강남타운",
-      "startDate": "2026-05-31",
-      "endDate": "2026-06-30",
-      "hours": "",
-      "reservation": "현장 방문",
-      "summary": "올리브영 주요 매장에서 운영된 산리오 폼폼푸린 협업 뷰티 팝업. 대표 상품 립 글로이 밤 & 클릭커 키링 세트는 온라인 판매 2시간 만에 완판됐습니다.",
-      "highlights": [
-        "립 글로이 밤 & 클릭커 키링 세트 — 온라인 2시간 만에 완판",
-        "6/15~30 공식몰 기획전, 최대 59% 할인 + 완판 상품 재판매",
-        "10만원 이상 구매 시 폼폼푸린 시딩 키트 증정"
-      ],
-      "note": "팝업 시작일은 기사에 명시되지 않았습니다. 여기 적힌 5월 31일은 올리브영 컬렉션 출시일이며, 팝업 종료일(6월 30일)만 기사로 확인됐습니다.",
-      "sources": [
-        {
-          "title": "뉴시스 - LF 아떼, 산리오 폼폼푸린 협업 흥행",
-          "url": "https://www.newsis.com/view/NISX20260609_0003661348"
-        },
-        {
-          "title": "이투데이 - 폼폼푸린 협업 컬렉션 조기 품절",
-          "url": "https://www.etoday.co.kr/news/view/2591757"
-        }
-      ],
-      "areas": [
-        "성수",
-        "강남"
-      ],
-      "brandDomain": "athebeauty.com",
-      "official": {
-        "label": "아떼 공식 홈페이지",
-        "url": "https://athebeauty.com/"
-      }
-    },
-    {
-      "id": "medicube-joannefriends-2026",
-      "title": "메디큐브 × 조앤프렌즈 에디션",
-      "ip": [
-        "조앤프렌즈"
-      ],
-      "brand": "메디큐브",
-      "category": "beauty",
-      "type": "팝업스토어",
-      "country": "KR",
-      "region": "서울 성동",
-      "venue": "메디큐브 성수 플래그십 (성동구 성수이로7길 40, 스페이스성수)",
-      "startDate": "2026-06-08",
-      "endDate": "2026-08-01",
-      "hours": "매일 11:00 ~ 20:00",
-      "reservation": "현장 방문",
-      "summary": "뷰티 디바이스 브랜드가 캐릭터 IP와 손잡고 성수 플래그십에 꾸민 체험형 팝업. 신제품 부스터 프로 X2를 직접 써볼 수 있게 구성했습니다.",
-      "highlights": [
-        "부스터 프로 X2 조앤프렌즈 에디션 체험",
-        "스탬프 미션 완료 시 PDRN 젤리 미스트 60ml 증정",
-        "선착순 50명 핀볼 이벤트 / 5만원 이상 구매 시 포토컷·코인 이벤트"
-      ],
-      "sources": [
-        {
-          "title": "팝플리 - 메디큐브 X 조앤프렌즈 팝업",
-          "url": "https://popply.co.kr/popup/5172"
-        },
-        {
-          "title": "APR 블로그 - 부스터 프로 X2 조앤프렌즈 에디션",
-          "url": "https://apr-blog.com/zoandfriends-edition"
-        }
-      ],
-      "areas": [
-        "성수"
-      ],
-      "official": {
-        "label": "공식 인스타그램 (포스터·사진)",
-        "url": "https://www.instagram.com/medicube_global_official/"
-      }
-    },
-    {
-      "id": "ilso-shinchan-2026",
-      "title": "일소 × 짱구는 못말려 팝업",
-      "ip": [
-        "짱구는 못말려"
-      ],
-      "brand": "일소 (ILSO)",
-      "category": "beauty",
-      "type": "팝업스토어",
-      "country": "KR",
-      "region": "서울 강남",
-      "venue": "올리브영 강남타운 3F",
-      "startDate": "2026-07-01",
-      "endDate": "2026-07-31",
-      "hours": "10:00 ~ 23:00",
-      "reservation": "현장 방문",
-      "summary": "모공 케어 브랜드 일소가 짱구 IP와 협업해 올리브영 강남타운에 연 뷰티 팝업. '모공 청소 방범대 본부' 콘셉트로 꾸몄습니다.",
-      "highlights": [
-        "모공 청소 방범대 본부 콘셉트 공간",
-        "피지클리너·모공톡스앰플·필링스왑·코팩 등 주요 제품 전시",
-        "키캡 키링 만들기, 포토존 등 참여형 콘텐츠"
-      ],
-      "sources": [
-        {
-          "title": "더밸류뉴스 - 일소, 짱구는 못말려 협업 에디션",
-          "url": "https://www.thevaluenews.co.kr/news/199735"
-        },
-        {
-          "title": "팝가 - 일소 X 짱구는 못말려 팝업",
-          "url": "https://popga.co.kr/popup/7811"
-        }
-      ],
-      "areas": [
-        "강남"
-      ],
-      "brandDomain": "ilso.kr",
-      "official": {
-        "label": "공식 인스타그램 (포스터·사진)",
-        "url": "https://www.instagram.com/ilso_official/"
-      }
+      "note": "자료마다 정보가 다릅니다. 시작일은 6월 19일 또는 6월 22일, 운영시간은 12:00~19:00 또는 11:00~19:00(마지막 입장 18:20)로 엇갈립니다. 원본 전시와 앙코르(Again) 회차가 섞여 있는 것으로 보입니다. 방문 전 예매 페이지에서 확인하세요.",
+      "ipOrigin": "JP"
     },
     {
       "id": "casetify-shinchan-busan-2026",
@@ -673,137 +246,8 @@
       "official": {
         "label": "CASETiFY 공식 사이트",
         "url": "https://www.casetify.com/"
-      }
-    },
-    {
-      "id": "loopy-onepiece-2026",
-      "title": "JUMP SHOP in SEOUL 제2탄 — 원피스 × 잔망루피",
-      "ip": [
-        "잔망루피",
-        "원피스"
-      ],
-      "brand": "점프샵 (서울미디어코믹스)",
-      "category": "culture",
-      "type": "팝업스토어",
-      "country": "KR",
-      "region": "서울 용산",
-      "venue": "용산 아이파크몰 더센터 6F",
-      "startDate": "2026-01-23",
-      "endDate": "2026-02-05",
-      "hours": "월~목 10:30~20:30 / 금~일 10:30~21:00",
-      "reservation": "1/23~25 네이버 사전예약, 이후 현장 방문",
-      "summary": "두 캐릭터의 이름이 모두 '루피'라는 데서 출발한 콜라보. 원피스 × 잔망루피 상품을 점프샵에서 최초로 선보였고, 팝업 오픈 직후 피규어 단일상품 매출 1위를 기록했습니다.",
-      "highlights": [
-        "랜덤 블라인드 피규어 6종 (각 17,000원)",
-        "루피·초파 인형 파우치 (각 16,500원)",
-        "랜덤 아크릴 키링 10종 (11,000원) / 메탈 핀뱃지 세트 (33,000원)",
-        "원피스·나루토·블리치·드래곤볼·하이큐 등 점프 작품 동시 전개"
-      ],
-      "sources": [
-        {
-          "title": "여행픽 - JUMP SHOP in SEOUL 제2탄",
-          "url": "https://www.thetrippick.com/news/articleView.html?idxno=2478"
-        },
-        {
-          "title": "팝플리 - JUMP SHOP in SEOUL 제2탄",
-          "url": "https://popply.co.kr/popup/4225"
-        },
-        {
-          "title": "토이뉴스 - 루피루피 콜라보 공개",
-          "url": "https://toynews.kr/article/1065577338588937"
-        }
-      ],
-      "areas": [
-        "용산"
-      ],
-      "brandDomain": "iparkmall.co.kr",
-      "official": {
-        "label": "점프샵 공식 X (트위터)",
-        "url": "https://x.com/seoul_jump"
-      }
-    },
-    {
-      "id": "cu-pokemon-cards-2026",
-      "title": "CU × 포켓몬 카드팩 4종",
-      "ip": [
-        "포켓몬"
-      ],
-      "brand": "CU",
-      "category": "cvs",
-      "type": "상품 콜라보",
-      "country": "KR",
-      "region": "전국",
-      "venue": "CU 전국 매장",
-      "startDate": "2026-05-02",
-      "endDate": null,
-      "hours": "",
-      "reservation": "매장 구매",
-      "summary": "어린이날 시즌에 맞춰 5월 2일 출시된 포켓몬 카드팩 4종. 사흘 만에 25만 개가 팔리며 준비 물량 약 26만 5천 팩의 96%가 소진됐습니다.",
-      "highlights": [
-        "출시 3일 만에 25만 개 판매 (준비 물량의 96% 소진)",
-        "20·30대 구매 비중 60% 이상 — 이른바 \"어른이\" 수요",
-        "같은 시즌 캐릭터 상품 매출 75% 증가",
-        "함께 출시: 패트와매트 기획세트, 산리오 봉봉스티커, 티니핑 스탬프 등"
-      ],
-      "sources": [
-        {
-          "title": "BGF리테일 - CU 캐릭터 상품 매출 75% 증가",
-          "url": "https://bgfretail.com/press/view/?id=1910"
-        },
-        {
-          "title": "전자신문 - 포켓몬 카드팩 사흘 만에 25만개 판매",
-          "url": "https://www.etnews.com/20260513000090"
-        }
-      ],
-      "periodText": "2026.05.02(토) 출시 · 한정 수량 소진",
-      "areas": [
-        "전국·온라인"
-      ],
-      "official": {
-        "label": "공식 인스타그램 (포스터·사진)",
-        "url": "https://www.instagram.com/cu_official/"
-      }
-    },
-    {
-      "id": "etude-ganadi-2026",
-      "title": "에뛰드 X 가나디 뷰티 고민 상담소",
-      "ip": [
-        "가나디"
-      ],
-      "brand": "에뛰드",
-      "category": "beauty",
-      "type": "상품 콜라보",
-      "country": "KR",
-      "region": "전국",
-      "venue": "네이버 · 아모레몰 · 무신사 등",
-      "startDate": "2026-03-09",
-      "endDate": null,
-      "hours": "",
-      "reservation": "매장·온라인 구매",
-      "summary": "신규 인기 IP '가나디'와 협업한 색조 컬렉션. 3월 9일 네이버를 시작으로 아모레몰(3/11~), 무신사(3/17~22) 순으로 판매됐고 굿즈 포함 상품은 조기 품절됐습니다.",
-      "highlights": [
-        "뽀용 아이 메이커 · 포근 픽싱 틴트 신규 컬러",
-        "듀이 베이스 프렙 · 컬 픽스 마스카라 · 재창조 쉐딩 스틱 · 피지쏙 젤리 파우더",
-        "굿즈 포함 일부 상품 조기 품절"
-      ],
-      "sources": [
-        {
-          "title": "장업신문 - 에뛰드, 가나디와의 만남",
-          "url": "https://www.jangup.com/news/articleView.html?idxno=98304"
-        },
-        {
-          "title": "아모레몰 - 에뛰드X가나디 콜라보 런칭",
-          "url": "https://www.amoremall.com/kr/ko/display/event_detail?planDisplaySn=14110"
-        }
-      ],
-      "periodText": "2026.03.09(월) 출시 · 채널별 순차 판매",
-      "areas": [
-        "전국·온라인"
-      ],
-      "official": {
-        "label": "공식 인스타그램 (포스터·사진)",
-        "url": "https://www.instagram.com/etudeofficial/"
-      }
+      },
+      "ipOrigin": "JP"
     },
     {
       "id": "kbo-character-2026",
@@ -848,7 +292,8 @@
       "official": {
         "label": "KBO 공식 사이트",
         "url": "https://www.koreabaseball.com/"
-      }
+      },
+      "ipOrigin": "MIX"
     },
     {
       "id": "ganadi-drink-2026",
@@ -891,7 +336,148 @@
       "official": {
         "label": "공식 인스타그램 (포스터·사진)",
         "url": "https://www.instagram.com/cu_official/"
-      }
+      },
+      "ipOrigin": "KR"
+    },
+    {
+      "id": "oliveyoung-sanrio-2026",
+      "title": "올리브영 × 산리오캐릭터즈 전국 프로모션",
+      "ip": [
+        "산리오캐릭터즈",
+        "헬로키티"
+      ],
+      "ipOrigin": "JP",
+      "brand": "CJ올리브영",
+      "brandDomain": "oliveyoung.co.kr",
+      "category": "beauty",
+      "type": "상품 콜라보",
+      "country": "KR",
+      "region": "전국 (체험 팝업: 서울 성동)",
+      "areas": [
+        "성수",
+        "전국·온라인"
+      ],
+      "venue": "올리브영 전국 매장 / 올리브영N 성수 1F",
+      "startDate": "2026-09-01",
+      "endDate": "2026-09-30",
+      "hours": "매장 운영시간에 준함",
+      "reservation": "매장 방문",
+      "summary": "헬로키티에 지역 먹거리를 접목한 '지역 헬로키티'로 전국 매장을 관광 콘텐츠처럼 꾸민 한 달짜리 프로모션. 올리브영N 성수 1층은 'OY CITY' 콘셉트의 체험 공간으로 운영됩니다.",
+      "highlights": [
+        "올리브영N 성수 1F 'OLIVE YOUNG CITY TOUR' 체험 공간 (~9.30)",
+        "9.7~ 지역 헬로키티 부채 전 구매 고객 랜덤 증정",
+        "9.11~ '교복 헬로키티', 9.18~ '한복 헬로키티' 컨테이너 굿즈",
+        "9.18~24 산리오와 함께하는 가을 기프트 컬렉션"
+      ],
+      "official": {
+        "label": "올리브영 공식 사이트",
+        "url": "https://www.oliveyoung.co.kr/"
+      },
+      "sources": [
+        {
+          "title": "전자신문 - 올리브영, 산리오와 전국 매장 공략",
+          "url": "https://www.etnews.com/20260903000260"
+        },
+        {
+          "title": "중소기업투데이 - 헬로키티 지역 마케팅",
+          "url": "http://www.sbiztoday.kr/news/articleView.html?idxno=26967"
+        }
+      ]
+    },
+    {
+      "id": "ediya-sanrio-2026",
+      "title": "이디야커피 × 산리오캐릭터즈 한복 콜라보",
+      "ip": [
+        "산리오캐릭터즈",
+        "마이멜로디",
+        "쿠로미",
+        "시나모롤",
+        "포차코"
+      ],
+      "ipOrigin": "JP",
+      "brand": "이디야커피",
+      "brandDomain": "ediya.com",
+      "category": "cafe",
+      "type": "상품 콜라보",
+      "country": "KR",
+      "region": "전국",
+      "areas": [
+        "전국·온라인"
+      ],
+      "venue": "이디야커피 전국 매장",
+      "startDate": "2026-09-03",
+      "endDate": null,
+      "openEnded": true,
+      "hours": "매장 운영시간에 준함",
+      "reservation": "매장 구매",
+      "summary": "이디야와 산리오의 네 번째 협업. 한국 전통미와 가을 감성을 엮어 음료 3종과 한복 테마 굿즈를 함께 냈습니다.",
+      "highlights": [
+        "음료 3종: 마이멜로디 히비스커스 청귤티 / 쿠로미 흑임자 크림 라떼 / 포차코 밤 크림 라떼",
+        "스낵: 시나모롤 딸기 쇼콜라 크런치",
+        "랜덤 피규어 마그넷 8종, 인형 파우치 키링 2종",
+        "DIY 한복 인형 키링 4종, 댕기 노리개 2종",
+        "9.3~9.20 협업 음료 구매·적립 시 응모 이벤트"
+      ],
+      "note": "종료일이 공개되지 않았습니다. 굿즈는 소진 시 종료될 수 있습니다.",
+      "official": {
+        "label": "이디야커피 공식 사이트",
+        "url": "https://www.ediya.com/"
+      },
+      "sources": [
+        {
+          "title": "파이낸셜투데이 - 이디야커피 산리오 협업 신메뉴·굿즈",
+          "url": "https://www.ftoday.co.kr/news/articleView.html?idxno=364719"
+        },
+        {
+          "title": "이슈투데이 - 산리오캐릭터즈와 네 번째 협업",
+          "url": "https://www.issuetoday.co.kr/news/article.html?no=59264"
+        }
+      ]
+    },
+    {
+      "id": "starbucks-peanuts-2026",
+      "title": "스타벅스 × 피너츠 가을 굿즈",
+      "ip": [
+        "피너츠",
+        "스누피"
+      ],
+      "ipOrigin": "US",
+      "brand": "스타벅스 코리아",
+      "brandDomain": "starbucks.co.kr",
+      "category": "cafe",
+      "type": "상품 콜라보",
+      "country": "KR",
+      "region": "전국",
+      "areas": [
+        "전국·온라인"
+      ],
+      "venue": "스타벅스 전국 매장",
+      "startDate": "2026-09-15",
+      "endDate": null,
+      "openEnded": true,
+      "hours": "매장 운영시간에 준함",
+      "reservation": "매장 구매",
+      "summary": "스타벅스 글로벌과 피너츠가 함께한 가을 시즌 굿즈가 9월 15일부터 국내 매장에 들어옵니다. 호박과 단풍으로 가을 분위기를 담았습니다.",
+      "highlights": [
+        "펌킨 피너츠 글라스 콜드컵·머그·토트백 등 총 9종",
+        "같은 날 가을 신메뉴 카스텔라 고구마 라떼 출시",
+        "10월에는 '찰리 브라운의 할로윈' 60주년 스누피 MD 예고"
+      ],
+      "note": "종료일이 공개되지 않았습니다. 시즌 굿즈라 소진 시 종료됩니다.",
+      "official": {
+        "label": "스타벅스 코리아 공식 사이트",
+        "url": "https://www.starbucks.co.kr/"
+      },
+      "sources": [
+        {
+          "title": "이코노미사이언스 - 가을 시즌 제품·피너츠 협업 굿즈 9종",
+          "url": "https://www.e-science.co.kr/news/articleView.html?idxno=135339"
+        },
+        {
+          "title": "일요주간 - 고구마·밤·피너츠로 가을 시즌 공략",
+          "url": "https://www.ilyoweekly.co.kr/news/newsview.php?ncode=1065594819282249"
+        }
+      ]
     }
   ],
   "areas": [

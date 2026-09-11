@@ -4,6 +4,15 @@
   const DAY = 86400000;
   const DOW = ['일', '월', '화', '수', '목', '금', '토'];
 
+  const ORIGIN = {
+    KR:  '🇰🇷 국내',
+    JP:  '🇯🇵 일본',
+    US:  '🇺🇸 미국',
+    FI:  '🇫🇮 핀란드',
+    NL:  '🇳🇱 네덜란드',
+    MIX: '🌏 국내·해외 혼합',
+  };
+
   const STATUS = {
     live:    { label: '진행 중',   cls: 'live' },
     soon:    { label: '오픈 예정', cls: 'soon' },
@@ -186,7 +195,7 @@
     if (area !== 'all' && !(p.areas || []).includes(area)) return false;
     if (state.query) {
       const hay = [p.title, p.brand, p.venue, p.region, p.type, p.summary,
-                   ...(p.ip || []), ...(p.areas || []),
+                   ...(p.ip || []), ...(p.areas || []), ORIGIN[p.ipOrigin] || '',
                    state.catMap.get(p.category)?.label || '']
         .join(' ').toLowerCase();
       if (!hay.includes(state.query)) return false;
@@ -430,6 +439,7 @@
       ['운영시간', p.hours || '-'],
       ['입장', p.reservation || '-'],
       ['업종', cat ? `${cat.emoji} ${cat.label}` : '-'],
+      ['캐릭터', ORIGIN[p.ipOrigin] || ''],
     ];
     rows.forEach(([k, v]) => { if (v && v !== '-') info.append(row(k, v)); });
     body.append(section('기본 정보', info));

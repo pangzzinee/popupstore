@@ -159,21 +159,8 @@
     use.setAttribute('href', `#ill-${p.category}`);
     ill.append(use);
     box.append(ill);
-    // 브랜드 로고를 큼직하게. 못 불러오면 통째로 사라지고 IP 이름만 남는다.
-    if (p.brandDomain) {
-      const plate = el('span', 'thumb-logo');
-      const img = el('img');
-      img.alt = `${p.brand} 로고`;
-      img.loading = 'lazy';
-      loadLogo(img, logoSources(p.brandDomain, big ? 256 : 128), () => {
-        plate.remove();
-        box.classList.remove('has-logo');   // IP 이름을 원래 크기로 되돌린다
-      });
-      plate.append(img);
-      box.append(plate);
-      box.classList.add('has-logo');
-    }
-
+    // 로고는 여기 쓰지 않는다. 파비콘은 원본이 16~64px이라 키우면 뭉개진다.
+    // 선명함이 필요한 큰 자리는 벡터 일러스트와 글자가 맡는다.
     box.append(el('span', 'thumb-ip', (p.ip || []).join(' · ') || p.brand));
 
     if (p.image) {

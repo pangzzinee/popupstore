@@ -36,10 +36,27 @@ npx serve .
 python3 -m http.server 8000
 ```
 
-## 배포
+## 배포 (Vercel)
 
-`main` 브랜치에 푸시하면 GitHub Actions가 GitHub Pages로 자동 배포합니다.
-(저장소 Settings → Pages → Source를 **GitHub Actions**로 설정해 두세요.)
+빌드 도구가 없는 정적 사이트라서 Vercel에 그대로 올라갑니다. 설정할 게 없습니다.
+
+1. [vercel.com](https://vercel.com) → **Continue with GitHub**
+2. **Add New...** → **Project**
+3. `popupstore` 저장소 옆 **Import**
+   (목록에 안 보이면 **Adjust GitHub App Permissions** → `popupstore` 체크)
+4. 설정 화면에서 **아무것도 건드리지 말고** **Deploy**
+   - Framework Preset: `Other`
+   - Build Command / Output Directory: 비워둠
+5. 1분쯤 뒤 `popupstore.vercel.app` 같은 주소가 나옵니다
+
+이후 이 저장소의 기본 브랜치에 푸시할 때마다 Vercel이 자동으로 다시 배포합니다.
+`data/popups.json`에 팝업을 추가하면 1~2분 뒤 사이트에 반영됩니다.
+
+### GitHub Pages로 하고 싶다면
+
+`.github/workflows/deploy-pages.yml`이 이미 들어 있습니다. `main` 브랜치를 만들어
+거기에 푸시하고, 저장소 Settings → Pages → Source를 **GitHub Actions**로 바꾸면 됩니다.
+Vercel을 쓴다면 이 파일은 없어도 그만입니다.
 
 ## 데이터에 대하여
 

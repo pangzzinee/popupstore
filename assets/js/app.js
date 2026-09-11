@@ -79,22 +79,45 @@
     return { hue: (h % 12) * 30 + 14, pattern: Math.floor(h / 12) % 3 };
   }
 
-  // 브랜드 파비콘. 협업 브랜드를 식별하는 용도(지명적 사용)라 로고 자체를
-  // 재가공하지 않는다. 불러오지 못하면 조용히 사라진다.
-  function brandLogo(p) {
-    if (!p.brandDomain) return null;
+  // 브랜드 이름에서 머리글자를 뽑는다. 괄호 안 설명은 버린다.
+  function initials(name) {
+    const head = String(name || '').replace(/[（(].*$/, '').trim();
+    const ascii = head.match(/^[A-Za-z]+/);
+    if (ascii) {
+      const w = ascii[0];
+      return (w.length <= 3 ? w : w.slice(0, 2)).toUpperCase();
+    }
+    return head.slice(0, 1);
+  }
+
+  // 브랜드 표식. 머리글자 칩을 항상 먼저 깔고, 공식 파비콘을 가져오면 그 위에 덮는다.
+  // 외부 서비스가 막혀 있거나 광고 차단기에 걸려도 표식 자체는 사라지지 않는다.
+  function brandMark(p) {
+    const mark = el('span', 'brand-badge', initials(p.brand));
+    mark.style.setProperty('--h', paletteOf(p.brand).hue);
+    if (!p.brandDomain) return mark;
+
+    const tries = [
+      `https://www.google.com/s2/favicons?domain=${p.brandDomain}&sz=64`,
+      `https://icons.duckduckgo.com/ip3/${p.brandDomain}.ico`,
+    ];
     const img = el('img', 'brand-logo');
-    img.src = `https://icons.duckduckgo.com/ip3/${p.brandDomain}.ico`;
     img.alt = '';
     img.loading = 'lazy';
-    img.addEventListener('error', () => img.remove());
-    return img;
+    let i = 0;
+    img.addEventListener('error', () => {
+      i += 1;
+      if (i < tries.length) img.src = tries[i];
+      else img.remove();          // 머리글자 칩이 그대로 남는다
+    });
+    img.src = tries[0];
+    mark.append(img);
+    return mark;
   }
 
   function pairLine(p, cls) {
     const line = el('p', cls);
-    const logo = brandLogo(p);
-    if (logo) line.append(logo);
+    line.append(brandMark(p));
     line.append(document.createTextNode(`${(p.ip || []).join(' · ')} × ${p.brand}`));
     return line;
   }

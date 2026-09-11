@@ -288,12 +288,25 @@ img { max-width: 100%; }
 .card-title { font-size: 17px; font-weight: 700; letter-spacing: -.02em; line-height: 1.35; }
 .card-pair { font-size: 13.5px; color: var(--accent-ink); font-weight: 600; }
 .card-pair, .modal-pair { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
-.brand-logo {
-  width: 18px; height: 18px; flex: none; border-radius: 4px;
-  object-fit: contain; background: var(--bg-elev);
-  border: 1px solid var(--line); padding: 1px;
+.brand-badge {
+  position: relative; flex: none; width: 20px; height: 20px; border-radius: 5px;
+  display: grid; place-items: center; overflow: hidden;
+  font-size: 10.5px; font-weight: 800; letter-spacing: -.04em; line-height: 1;
+  color: hsl(var(--h) 45% 34%); background: hsl(var(--h) 55% 91%);
+  border: 1px solid hsl(var(--h) 40% 82%);
 }
-.modal-pair .brand-logo { width: 20px; height: 20px; }
+.brand-logo {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: contain; background: var(--bg-elev); padding: 1px;
+}
+.modal-pair .brand-badge { width: 23px; height: 23px; font-size: 11.5px; }
+
+@media (prefers-color-scheme: dark) {
+  .brand-badge {
+    color: hsl(var(--h) 55% 80%); background: hsl(var(--h) 30% 24%);
+    border-color: hsl(var(--h) 28% 34%);
+  }
+}
 .card-meta { display: grid; gap: 5px; font-size: 13px; color: var(--ink-2); margin-top: 2px; }
 .card-meta div { display: flex; gap: 8px; }
 .card-meta .k { color: var(--ink-3); flex: none; width: 38px; }

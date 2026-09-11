@@ -59,6 +59,51 @@
     return `${fmt(p.startDate)} ~ ${fmt(p.endDate)}`;
   }
 
+  /* ---------- 썸네일 ---------- */
+  // 캐릭터 이름에서 고정된 색을 뽑는다. 같은 IP는 항상 같은 색이 나온다.
+  function hueOf(str) {
+    // FNV-1a. 단순 누적합은 한글처럼 코드값이 몰린 문자에서 비슷한 색만 나온다.
+    let h = 2166136261;
+    for (const ch of String(str)) {
+      h ^= ch.codePointAt(0);
+      h = Math.imul(h, 16777619);
+    }
+    return h >>> 0;
+  }
+
+  // 색은 30도 간격 12칸으로 스냅한다. 어중간하게 비슷한 색보다
+  // 확실히 다르거나 아예 같은 편이 눈에 덜 거슬린다.
+  // 겹치더라도 배경 무늬 3종이 달라서 구분이 된다.
+  function paletteOf(str) {
+    const h = hueOf(str);
+    return { hue: (h % 12) * 30 + 14, pattern: Math.floor(h / 12) % 3 };
+  }
+
+  // p.image가 있으면 실제 사진, 없으면 자동 생성 카드
+  function thumb(p, big) {
+    const cat = state.catMap.get(p.category);
+    const ipName = (p.ip || [])[0] || p.brand || '';
+    const box = el('div', `thumb${big ? ' thumb-lg' : ''}`);
+    const { hue, pattern } = paletteOf(ipName);
+    box.style.setProperty('--h', hue);
+    box.dataset.pat = pattern;
+
+    box.append(el('span', 'thumb-emoji', cat ? cat.emoji : '🎪'));
+    box.append(el('span', 'thumb-ip', (p.ip || []).join(' · ') || p.brand));
+
+    if (p.image) {
+      const img = el('img', 'thumb-img');
+      img.src = p.image;
+      img.alt = `${p.title} 이미지`;
+      img.loading = 'lazy';
+      // 사진이 깨지면 자동 생성 카드가 그대로 보이도록 숨긴다
+      img.addEventListener('error', () => img.remove());
+      box.append(img);
+      if (p.imageCredit) box.append(el('span', 'thumb-credit', p.imageCredit));
+    }
+    return box;
+  }
+
   /* ---------- status ---------- */
   function statusOf(p) {
     if (!p.startDate) return 'undated';
@@ -208,15 +253,15 @@
       const card = el('button', 'card');
       card.type = 'button';
 
-      const top = el('div', 'card-top');
-      const badges = el('div', 'badges');
-      const b = el('span', `badge ${STATUS[st].cls}`, STATUS[st].label);
-      badges.append(b);
-      const d = dday(p);
-      if (d) badges.append(el('span', 'badge type', d));
-      if (p.type && p.type !== '팝업스토어') badges.append(el('span', 'badge type', p.type));
       const cat = state.catMap.get(p.category);
-      top.append(badges, el('span', 'card-cat', cat ? `${cat.emoji} ${cat.label}` : ''));
+      const th = thumb(p);
+      const badges = el('div', 'thumb-badges');
+      badges.append(el('span', `badge ${STATUS[st].cls}`, STATUS[st].label));
+      const d = dday(p);
+      if (d) badges.append(el('span', 'badge over', d));
+      if (p.type && p.type !== '팝업스토어') badges.append(el('span', 'badge over', p.type));
+      th.append(badges);
+      if (cat) th.append(el('span', 'thumb-cat', `${cat.emoji} ${cat.label}`));
 
       const meta = el('div', 'card-meta');
       meta.append(
@@ -224,13 +269,14 @@
         row('장소', p.venue || p.region || '-'),
       );
 
-      card.append(
-        top,
+      const body = el('div', 'card-body');
+      body.append(
         el('h3', 'card-title', p.title),
         el('p', 'card-pair', `${(p.ip || []).join(' · ')} × ${p.brand}`),
         meta,
         el('p', 'card-more', '자세히 보기 →'),
       );
+      card.append(th, body);
       card.addEventListener('click', () => openModal(p));
       box.append(card);
     });
@@ -295,6 +341,8 @@
     body.textContent = '';
     const st = statusOf(p);
     const cat = state.catMap.get(p.category);
+
+    body.append(thumb(p, true));
 
     const badges = el('div', 'badges');
     badges.append(el('span', `badge ${STATUS[st].cls}`, STATUS[st].label));

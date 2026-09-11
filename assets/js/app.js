@@ -264,11 +264,11 @@
     const statusBox = $('#statusChips');
     statusBox.textContent = '';
     const statusDefs = [
-      { id: 'all', label: '전체' },
-      { id: 'live', label: '진행 중' },
-      { id: 'soon', label: '오픈 예정' },
-      { id: 'ended', label: '종료' },
-      { id: 'undated', label: '기간 미정' },
+      { id: 'all', label: '🗂 전체' },
+      { id: 'live', label: '🔥 진행 중' },
+      { id: 'soon', label: '📅 오픈 예정' },
+      { id: 'ended', label: '🏁 종료' },
+      { id: 'undated', label: '❓ 기간 미정' },
     ];
     statusDefs.forEach((d) => {
       const n = state.popups.filter((p) =>
@@ -327,26 +327,25 @@
 
       const cat = state.catMap.get(p.category);
       const th = thumb(p);
+      // 카드가 좁아 겹치므로 겉면에는 상태와 D-day만. 유형·업종 이름은 상세에 있다.
       const badges = el('div', 'thumb-badges');
       badges.append(el('span', `badge ${STATUS[st].cls}`, STATUS[st].label));
       const d = dday(p);
       if (d) badges.append(el('span', 'badge over', d));
-      if (p.type && p.type !== '팝업스토어') badges.append(el('span', 'badge over', p.type));
       th.append(badges);
-      if (cat) th.append(el('span', 'thumb-cat', `${cat.emoji} ${cat.label}`));
-
-      const meta = el('div', 'card-meta');
-      meta.append(
-        row('기간', period(p)),
-        row('장소', p.venue || p.region || '-'),
-      );
+      if (cat) {
+        const c = el('span', 'thumb-cat', cat.emoji);
+        c.title = cat.label;
+        c.setAttribute('aria-label', cat.label);
+        th.append(c);
+      }
 
       const body = el('div', 'card-body');
       body.append(
         el('h3', 'card-title', p.title),
         pairLine(p, 'card-pair'),
-        meta,
-        el('p', 'card-more', '자세히 보기 →'),
+        el('p', 'card-when', period(p)),
+        el('p', 'card-where', p.venue || p.region || ''),
       );
       card.append(th, body);
       card.addEventListener('click', () => openModal(p));

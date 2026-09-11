@@ -1,0 +1,424 @@
+(() => {
+  'use strict';
+
+  const DAY = 86400000;
+  const DOW = ['일', '월', '화', '수', '목', '금', '토'];
+
+  const STATUS = {
+    live:    { label: '진행 중',   cls: 'live' },
+    soon:    { label: '오픈 예정', cls: 'soon' },
+    ended:   { label: '종료',      cls: 'done' },
+    undated: { label: '기간 미정', cls: 'done' },
+  };
+
+  const state = {
+    popups: [],
+    categories: [],
+    catMap: new Map(),
+    status: 'all',
+    category: 'all',
+    query: '',
+    sort: 'soonest',
+    view: 'list',
+    cursor: startOfMonth(new Date()),
+  };
+
+  const $ = (sel) => document.querySelector(sel);
+  const el = (tag, cls, text) => {
+    const n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text != null) n.textContent = text;
+    return n;
+  };
+
+  /* ---------- date helpers (local, no timezone drift) ---------- */
+  function parseDate(s) {
+    if (!s) return null;
+    const [y, m, d] = s.split('-').map(Number);
+    return new Date(y, m - 1, d);
+  }
+  function today() {
+    const n = new Date();
+    return new Date(n.getFullYear(), n.getMonth(), n.getDate());
+  }
+  function startOfMonth(d) { return new Date(d.getFullYear(), d.getMonth(), 1); }
+  function iso(d) {
+    return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+  }
+  function fmt(s) {
+    const d = parseDate(s);
+    if (!d) return '';
+    return `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}(${DOW[d.getDay()]})`;
+  }
+  function period(p) {
+    if (!p.startDate) return '기간 미정 · 상시';
+    const end = p.endDate ? fmt(p.endDate) : '미정';
+    return `${fmt(p.startDate)} ~ ${end}`;
+  }
+
+  /* ---------- status ---------- */
+  function statusOf(p) {
+    if (!p.startDate) return 'undated';
+    const now = today();
+    const s = parseDate(p.startDate);
+    const e = p.endDate ? parseDate(p.endDate) : s;
+    if (now < s) return 'soon';
+    if (now > e) return 'ended';
+    return 'live';
+  }
+  function dday(p) {
+    const st = statusOf(p);
+    const now = today();
+    if (st === 'soon') {
+      const n = Math.round((parseDate(p.startDate) - now) / DAY);
+      return n === 0 ? '오늘 오픈' : `D-${n}`;
+    }
+    if (st === 'live' && p.endDate) {
+      const n = Math.round((parseDate(p.endDate) - now) / DAY);
+      return n === 0 ? '오늘 마감' : `${n}일 남음`;
+    }
+    return '';
+  }
+
+  /* ---------- filtering ---------- */
+  function matches(p, { status = state.status, category = state.category } = {}) {
+    if (status !== 'all' && statusOf(p) !== status) return false;
+    if (category !== 'all' && p.category !== category) return false;
+    if (state.query) {
+      const hay = [p.title, p.brand, p.venue, p.region, p.type, p.summary,
+                   ...(p.ip || []), state.catMap.get(p.category)?.label || '']
+        .join(' ').toLowerCase();
+      if (!hay.includes(state.query)) return false;
+    }
+    return true;
+  }
+  function visible() { return state.popups.filter((p) => matches(p)); }
+
+  function sortList(list) {
+    const now = today();
+    const order = { live: 0, soon: 1, undated: 2, ended: 3 };
+    const copy = [...list];
+    if (state.sort === 'name') {
+      copy.sort((a, b) => a.title.localeCompare(b.title, 'ko'));
+    } else if (state.sort === 'latest') {
+      copy.sort((a, b) => (b.startDate || '').localeCompare(a.startDate || ''));
+    } else {
+      copy.sort((a, b) => {
+        const sa = statusOf(a), sb = statusOf(b);
+        if (order[sa] !== order[sb]) return order[sa] - order[sb];
+        if (sa === 'live') {
+          const ea = a.endDate ? parseDate(a.endDate) : now;
+          const eb = b.endDate ? parseDate(b.endDate) : now;
+          return ea - eb;                    // 먼저 끝나는 것부터
+        }
+        if (sa === 'soon') return parseDate(a.startDate) - parseDate(b.startDate);
+        if (sa === 'ended') return (b.endDate || '').localeCompare(a.endDate || '');
+        return a.title.localeCompare(b.title, 'ko');
+      });
+    }
+    return copy;
+  }
+
+  /* ---------- render: stats ---------- */
+  function renderStats() {
+    const box = $('#stats');
+    box.textContent = '';
+    const counts = { live: 0, soon: 0, ended: 0, undated: 0 };
+    state.popups.forEach((p) => counts[statusOf(p)]++);
+    const items = [
+      { n: counts.live, label: '진행 중', cls: 'live' },
+      { n: counts.soon, label: '오픈 예정', cls: 'soon' },
+      { n: state.popups.length, label: '전체 기록', cls: '' },
+    ];
+    items.forEach((it) => {
+      const s = el('div', `stat ${it.cls}`.trim());
+      s.append(el('div', 'stat-num', String(it.n)), el('div', 'stat-label', it.label));
+      box.append(s);
+    });
+  }
+
+  /* ---------- render: chips ---------- */
+  function renderChips() {
+    const statusBox = $('#statusChips');
+    statusBox.textContent = '';
+    const statusDefs = [
+      { id: 'all', label: '전체' },
+      { id: 'live', label: '진행 중' },
+      { id: 'soon', label: '오픈 예정' },
+      { id: 'ended', label: '종료' },
+      { id: 'undated', label: '기간 미정' },
+    ];
+    statusDefs.forEach((d) => {
+      const n = state.popups.filter((p) =>
+        matches(p, { status: d.id })).length;
+      statusBox.append(makeChip(d.label, n, state.status === d.id, () => {
+        state.status = d.id; render();
+      }));
+    });
+
+    const catBox = $('#categoryChips');
+    catBox.textContent = '';
+    const catDefs = [{ id: 'all', label: '전체', emoji: '' }, ...state.categories];
+    catDefs.forEach((c) => {
+      const n = state.popups.filter((p) => matches(p, { category: c.id })).length;
+      if (c.id !== 'all' && n === 0) return;
+      const label = c.emoji ? `${c.emoji} ${c.label}` : c.label;
+      catBox.append(makeChip(label, n, state.category === c.id, () => {
+        state.category = c.id; render();
+      }));
+    });
+  }
+
+  function makeChip(label, count, active, onClick) {
+    const b = el('button', `chip${active ? ' is-active' : ''}`);
+    b.type = 'button';
+    b.setAttribute('aria-pressed', String(active));
+    b.append(document.createTextNode(label));
+    b.append(el('span', 'count', String(count)));
+    b.addEventListener('click', onClick);
+    return b;
+  }
+
+  /* ---------- render: list ---------- */
+  function renderList() {
+    const list = sortList(visible());
+    const box = $('#cards');
+    box.textContent = '';
+    $('#empty').hidden = list.length > 0;
+    $('#resultCount').innerHTML = `총 <b>${list.length}</b>건`;
+
+    list.forEach((p) => {
+      const st = statusOf(p);
+      const card = el('button', 'card');
+      card.type = 'button';
+
+      const top = el('div', 'card-top');
+      const badges = el('div', 'badges');
+      const b = el('span', `badge ${STATUS[st].cls}`, STATUS[st].label);
+      badges.append(b);
+      const d = dday(p);
+      if (d) badges.append(el('span', 'badge type', d));
+      if (p.type && p.type !== '팝업스토어') badges.append(el('span', 'badge type', p.type));
+      const cat = state.catMap.get(p.category);
+      top.append(badges, el('span', 'card-cat', cat ? `${cat.emoji} ${cat.label}` : ''));
+
+      const meta = el('div', 'card-meta');
+      meta.append(
+        row('기간', period(p)),
+        row('장소', p.venue || p.region || '-'),
+      );
+
+      card.append(
+        top,
+        el('h3', 'card-title', p.title),
+        el('p', 'card-pair', `${(p.ip || []).join(' · ')} × ${p.brand}`),
+        meta,
+        el('p', 'card-more', '자세히 보기 →'),
+      );
+      card.addEventListener('click', () => openModal(p));
+      box.append(card);
+    });
+  }
+
+  function row(k, v) {
+    const d = el('div');
+    d.append(el('span', 'k', k), el('span', 'v', v));
+    return d;
+  }
+
+  /* ---------- render: calendar ---------- */
+  function renderCalendar() {
+    const grid = $('#calGrid');
+    grid.textContent = '';
+    const cur = state.cursor;
+    $('#calTitle').textContent = `${cur.getFullYear()}년 ${cur.getMonth() + 1}월`;
+
+    DOW.forEach((d, i) => {
+      grid.append(el('div', `cal-dow${i === 0 ? ' sun' : ''}`, d));
+    });
+
+    const first = startOfMonth(cur);
+    const gridStart = new Date(first);
+    gridStart.setDate(1 - first.getDay());
+    const dated = visible().filter((p) => p.startDate);
+    const now = iso(today());
+
+    // 필요한 주 수만 그린다 (마지막 빈 주 생략)
+    const daysInMonth = new Date(cur.getFullYear(), cur.getMonth() + 1, 0).getDate();
+    const cells = Math.ceil((first.getDay() + daysInMonth) / 7) * 7;
+
+    for (let i = 0; i < cells; i++) {
+      const day = new Date(gridStart.getFullYear(), gridStart.getMonth(), gridStart.getDate() + i);
+      const key = iso(day);
+      const out = day.getMonth() !== cur.getMonth();
+      const cell = el('div', `cal-cell${out ? ' is-out' : ''}${key === now ? ' is-today' : ''}`);
+      cell.append(el('div', 'cal-date', String(day.getDate())));
+
+      const onDay = dated.filter((p) => {
+        const s = p.startDate;
+        const e = p.endDate || p.startDate;
+        return key >= s && key <= e;
+      });
+      onDay.slice(0, 3).forEach((p) => {
+        const ev = el('button', `cal-ev${p.startDate === key ? ' is-start' : ''}`, p.title);
+        ev.type = 'button';
+        ev.title = `${p.title} — ${period(p)}`;
+        ev.addEventListener('click', () => openModal(p));
+        cell.append(ev);
+      });
+      if (onDay.length > 3) cell.append(el('div', 'cal-more', `+${onDay.length - 3}`));
+      grid.append(cell);
+    }
+  }
+
+  /* ---------- modal ---------- */
+  let lastFocus = null;
+  function openModal(p) {
+    lastFocus = document.activeElement;
+    const body = $('#modalBody');
+    body.textContent = '';
+    const st = statusOf(p);
+    const cat = state.catMap.get(p.category);
+
+    const badges = el('div', 'badges');
+    badges.append(el('span', `badge ${STATUS[st].cls}`, STATUS[st].label));
+    const d = dday(p);
+    if (d) badges.append(el('span', 'badge type', d));
+    if (p.type) badges.append(el('span', 'badge type', p.type));
+    body.append(badges);
+
+    const h = el('h3', 'modal-title', p.title);
+    h.id = 'modalTitle';
+    body.append(h);
+    body.append(el('p', 'modal-pair', `${(p.ip || []).join(' · ')} × ${p.brand}`));
+    if (p.summary) body.append(el('p', 'modal-summary', p.summary));
+
+    const info = el('div', 'info-table');
+    const rows = [
+      ['기간', period(p)],
+      ['장소', p.venue || '-'],
+      ['지역', p.region || '-'],
+      ['운영시간', p.hours || '-'],
+      ['입장', p.reservation || '-'],
+      ['업종', cat ? `${cat.emoji} ${cat.label}` : '-'],
+    ];
+    rows.forEach(([k, v]) => { if (v && v !== '-') info.append(row(k, v)); });
+    body.append(section('기본 정보', info));
+
+    if (p.highlights?.length) {
+      const ul = el('ul', 'hl-list');
+      p.highlights.forEach((t) => ul.append(el('li', null, t)));
+      body.append(section('이런 게 있어요', ul));
+    }
+
+    if (p.sources?.length) {
+      const ul = el('ul', 'src-list');
+      p.sources.forEach((s) => {
+        const li = el('li');
+        const a = el('a', null, s.title);
+        a.href = s.url; a.target = '_blank'; a.rel = 'noopener noreferrer';
+        li.append(a);
+        ul.append(li);
+      });
+      body.append(section('출처', ul));
+    }
+
+    if (p.note) body.append(el('p', 'modal-note', `⚠️ ${p.note}`));
+
+    const m = $('#modal');
+    m.hidden = false;
+    document.body.style.overflow = 'hidden';
+    $('.modal-close').focus();
+  }
+
+  function section(title, node) {
+    const s = el('div', 'modal-section');
+    s.append(el('h4', null, title), node);
+    return s;
+  }
+
+  function closeModal() {
+    $('#modal').hidden = true;
+    document.body.style.overflow = '';
+    lastFocus?.focus();
+  }
+
+  /* ---------- render root ---------- */
+  function render() {
+    renderStats();
+    renderChips();
+    if (state.view === 'list') renderList();
+    else renderCalendar();
+  }
+
+  /* ---------- events ---------- */
+  function bind() {
+    $('#search').addEventListener('input', (e) => {
+      state.query = e.target.value.trim().toLowerCase();
+      render();
+    });
+
+    $('#sort').addEventListener('change', (e) => {
+      state.sort = e.target.value;
+      renderList();
+    });
+
+    document.querySelectorAll('.view-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        state.view = btn.dataset.view;
+        document.querySelectorAll('.view-btn').forEach((b) => {
+          const on = b === btn;
+          b.classList.toggle('is-active', on);
+          b.setAttribute('aria-selected', String(on));
+        });
+        $('#listView').hidden = state.view !== 'list';
+        $('#calendarView').hidden = state.view !== 'calendar';
+        render();
+      });
+    });
+
+    $('#prevMonth').addEventListener('click', () => {
+      state.cursor = new Date(state.cursor.getFullYear(), state.cursor.getMonth() - 1, 1);
+      renderCalendar();
+    });
+    $('#nextMonth').addEventListener('click', () => {
+      state.cursor = new Date(state.cursor.getFullYear(), state.cursor.getMonth() + 1, 1);
+      renderCalendar();
+    });
+    $('#todayBtn').addEventListener('click', () => {
+      state.cursor = startOfMonth(new Date());
+      renderCalendar();
+    });
+
+    document.querySelectorAll('[data-close]').forEach((n) =>
+      n.addEventListener('click', closeModal));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !$('#modal').hidden) closeModal();
+    });
+  }
+
+  /* ---------- boot ---------- */
+  async function init() {
+    let data;
+    try {
+      const res = await fetch('data/popups.json', { cache: 'no-cache' });
+      if (!res.ok) throw new Error(res.status);
+      data = await res.json();
+    } catch (err) {
+      $('#cards').append(el('p', 'empty',
+        '데이터를 불러오지 못했습니다. 로컬에서 열었다면 `npx serve` 같은 정적 서버로 실행해 주세요.'));
+      return;
+    }
+
+    state.popups = data.popups || [];
+    state.categories = data.categories || [];
+    state.categories.forEach((c) => state.catMap.set(c.id, c));
+    $('#updatedAt').textContent = data.meta?.updatedAt || '';
+    $('#disclaimer').textContent = data.meta?.disclaimer || '';
+
+    bind();
+    render();
+  }
+
+  init();
+})();

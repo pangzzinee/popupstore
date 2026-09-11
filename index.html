@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>팝업 캘린더 — 캐릭터 콜라보 팝업 아카이브</title>
+  <meta name="description" content="캐릭터 IP와 브랜드가 함께 만든 팝업스토어·콜라보 일정을 한곳에서. 진행 중인 팝업, 오픈 예정, 지난 기록까지." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎪</text></svg>" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">🎪</span>
+        <div>
+          <h1 class="brand-name">팝업 캘린더</h1>
+          <p class="brand-tag">캐릭터 × 브랜드 콜라보 팝업을 한눈에</p>
+        </div>
+      </div>
+      <p class="updated">업데이트 <time id="updatedAt">—</time></p>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="wrap hero">
+      <h2 class="hero-title">지금 어떤 캐릭터가<br />어디서 팝업을 열고 있을까?</h2>
+      <p class="hero-desc">
+        민음사 × 오늘의귀여움처럼 출판사가 캐릭터와 책을 만들고, 엔제리너스 × 빵고미처럼 카페가 캐릭터 빵을 파는 —
+        캐릭터 IP가 브랜드와 손잡고 만든 팝업과 콜라보를 모아 기록합니다.
+      </p>
+      <div class="stats" id="stats" role="status" aria-live="polite"></div>
+    </section>
+
+    <section class="wrap controls" aria-label="검색 및 필터">
+      <div class="control-row">
+        <div class="search-box">
+          <span class="search-icon" aria-hidden="true">🔍</span>
+          <input type="search" id="search" placeholder="캐릭터, 브랜드, 장소로 검색 (예: 산리오, 더현대)"
+                 aria-label="캐릭터, 브랜드, 장소 검색" autocomplete="off" />
+        </div>
+        <div class="view-toggle" role="tablist" aria-label="보기 방식">
+          <button type="button" role="tab" class="view-btn is-active" data-view="list" aria-selected="true">목록</button>
+          <button type="button" role="tab" class="view-btn" data-view="calendar" aria-selected="false">캘린더</button>
+        </div>
+      </div>
+
+      <div class="filter-group" role="group" aria-label="진행 상태 필터">
+        <span class="filter-label">상태</span>
+        <div class="chips" id="statusChips"></div>
+      </div>
+
+      <div class="filter-group" role="group" aria-label="업종 필터">
+        <span class="filter-label">업종</span>
+        <div class="chips" id="categoryChips"></div>
+      </div>
+    </section>
+
+    <section class="wrap view" id="listView" aria-label="팝업 목록">
+      <div class="list-head">
+        <p class="result-count" id="resultCount"></p>
+        <label class="sort-label">
+          정렬
+          <select id="sort" aria-label="정렬 기준">
+            <option value="soonest">임박한 순</option>
+            <option value="latest">최근 시작한 순</option>
+            <option value="name">이름순</option>
+          </select>
+        </label>
+      </div>
+      <div class="cards" id="cards"></div>
+      <p class="empty" id="empty" hidden>조건에 맞는 팝업이 없어요. 필터를 바꿔보세요.</p>
+    </section>
+
+    <section class="wrap view" id="calendarView" aria-label="팝업 캘린더" hidden>
+      <div class="cal-head">
+        <button type="button" class="cal-nav" id="prevMonth" aria-label="이전 달">‹</button>
+        <h3 class="cal-title" id="calTitle" aria-live="polite"></h3>
+        <button type="button" class="cal-nav" id="nextMonth" aria-label="다음 달">›</button>
+        <button type="button" class="cal-today" id="todayBtn">이번 달</button>
+      </div>
+      <div class="cal-grid" id="calGrid"></div>
+      <p class="cal-note">※ 기간이 확인되지 않은 상시 콜라보는 캘린더에 표시되지 않습니다. 목록 보기에서 확인하세요.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p class="disclaimer" id="disclaimer"></p>
+      <p class="footer-meta">
+        데이터는 <code>data/popups.json</code>에 정리되어 있습니다. 항목 추가 방법은
+        <a href="https://github.com/pangzzinee/popupstore/blob/main/data/README.md">data/README.md</a>를 참고하세요.
+      </p>
+    </div>
+  </footer>
+
+  <div class="modal" id="modal" hidden role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-panel">
+      <button type="button" class="modal-close" data-close aria-label="닫기">✕</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

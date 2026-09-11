@@ -15,8 +15,10 @@
     popups: [],
     categories: [],
     catMap: new Map(),
+    areas: [],
     status: 'all',
     category: 'all',
+    area: 'all',
     query: '',
     sort: 'soonest',
     view: 'list',
@@ -51,9 +53,10 @@
     return `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}(${DOW[d.getDay()]})`;
   }
   function period(p) {
+    if (p.periodText) return p.periodText;
     if (!p.startDate) return '기간 미정 · 상시';
-    const end = p.endDate ? fmt(p.endDate) : '미정';
-    return `${fmt(p.startDate)} ~ ${end}`;
+    if (!p.endDate) return p.openEnded ? `${fmt(p.startDate)} ~ 종료일 미정` : `${fmt(p.startDate)} 출시`;
+    return `${fmt(p.startDate)} ~ ${fmt(p.endDate)}`;
   }
 
   /* ---------- status ---------- */
@@ -61,10 +64,9 @@
     if (!p.startDate) return 'undated';
     const now = today();
     const s = parseDate(p.startDate);
-    const e = p.endDate ? parseDate(p.endDate) : s;
     if (now < s) return 'soon';
-    if (now > e) return 'ended';
-    return 'live';
+    if (!p.endDate) return p.openEnded ? 'live' : 'ended';
+    return now > parseDate(p.endDate) ? 'ended' : 'live';
   }
   function dday(p) {
     const st = statusOf(p);
@@ -73,6 +75,7 @@
       const n = Math.round((parseDate(p.startDate) - now) / DAY);
       return n === 0 ? '오늘 오픈' : `D-${n}`;
     }
+    if (st === 'live' && !p.endDate) return '종료일 미정';
     if (st === 'live' && p.endDate) {
       const n = Math.round((parseDate(p.endDate) - now) / DAY);
       return n === 0 ? '오늘 마감' : `${n}일 남음`;
@@ -81,12 +84,14 @@
   }
 
   /* ---------- filtering ---------- */
-  function matches(p, { status = state.status, category = state.category } = {}) {
+  function matches(p, { status = state.status, category = state.category, area = state.area } = {}) {
     if (status !== 'all' && statusOf(p) !== status) return false;
     if (category !== 'all' && p.category !== category) return false;
+    if (area !== 'all' && !(p.areas || []).includes(area)) return false;
     if (state.query) {
       const hay = [p.title, p.brand, p.venue, p.region, p.type, p.summary,
-                   ...(p.ip || []), state.catMap.get(p.category)?.label || '']
+                   ...(p.ip || []), ...(p.areas || []),
+                   state.catMap.get(p.category)?.label || '']
         .join(' ').toLowerCase();
       if (!hay.includes(state.query)) return false;
     }
@@ -167,6 +172,17 @@
         state.category = c.id; render();
       }));
     });
+
+    const areaBox = $('#areaChips');
+    areaBox.textContent = '';
+    [{ id: 'all', label: '전체' }, ...state.areas.map((a) => ({ id: a, label: a }))]
+      .forEach((a) => {
+        const n = state.popups.filter((p) => matches(p, { area: a.id })).length;
+        if (a.id !== 'all' && n === 0) return;
+        areaBox.append(makeChip(a.label, n, state.area === a.id, () => {
+          state.area = a.id; render();
+        }));
+      });
   }
 
   function makeChip(label, count, active, onClick) {
@@ -256,7 +272,7 @@
 
       const onDay = dated.filter((p) => {
         const s = p.startDate;
-        const e = p.endDate || p.startDate;
+        const e = p.endDate || (p.openEnded ? now : p.startDate);
         return key >= s && key <= e;
       });
       onDay.slice(0, 3).forEach((p) => {
@@ -298,6 +314,7 @@
       ['기간', period(p)],
       ['장소', p.venue || '-'],
       ['지역', p.region || '-'],
+      ['동네', (p.areas || []).join(' · ')],
       ['운영시간', p.hours || '-'],
       ['입장', p.reservation || '-'],
       ['업종', cat ? `${cat.emoji} ${cat.label}` : '-'],
@@ -412,6 +429,7 @@
 
     state.popups = data.popups || [];
     state.categories = data.categories || [];
+    state.areas = data.areas || [];
     state.categories.forEach((c) => state.catMap.set(c.id, c));
     $('#updatedAt').textContent = data.meta?.updatedAt || '';
     $('#disclaimer').textContent = data.meta?.disclaimer || '';

@@ -408,6 +408,19 @@
     body.append(pairLine(p, 'modal-pair'));
     if (p.summary) body.append(el('p', 'modal-summary', p.summary));
 
+    if (p.official?.url) {
+      const a = el('a', 'official-link');
+      a.href = p.official.url;
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      a.append(el('span', 'official-icon', '📷'));
+      const t = el('span', 'official-text');
+      t.append(el('strong', null, '공식 페이지에서 포스터·사진 보기'),
+               el('small', null, p.official.label));
+      a.append(t, el('span', 'official-arrow', '→'));
+      body.append(a);
+    }
+
     const info = el('div', 'info-table');
     const rows = [
       ['기간', period(p)],

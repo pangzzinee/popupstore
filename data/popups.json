@@ -83,7 +83,11 @@
         "용산"
       ],
       "brandDomain": "minumsa.com",
-      "note": "8월 13일부터 종료일까지 21시 30분 이후 워크인 입장 불가였습니다."
+      "note": "8월 13일부터 종료일까지 21시 30분 이후 워크인 입장 불가였습니다.",
+      "official": {
+        "label": "공식 예약 페이지 (카카오)",
+        "url": "https://booking.kakao.com/detail/ticketStore/307413"
+      }
     },
     {
       "id": "minumsa-todaycute-busan-2026",
@@ -124,7 +128,11 @@
           "title": "민음사 공식 X - 팝업 입장 안내",
           "url": "https://x.com/minumsa_books/status/2087793758817665071"
         }
-      ]
+      ],
+      "official": {
+        "label": "공식 인스타그램 (포스터·사진)",
+        "url": "https://www.instagram.com/minumsa_books/"
+      }
     },
     {
       "id": "kleague-sanrio-2026",
@@ -161,7 +169,11 @@
       "areas": [
         "여의도"
       ],
-      "brandDomain": "kleague.com"
+      "brandDomain": "kleague.com",
+      "official": {
+        "label": "K리그 공식 사이트",
+        "url": "https://www.kleague.com/"
+      }
     },
     {
       "id": "shinchan-yongsan-2026",
@@ -193,7 +205,11 @@
       "areas": [
         "용산"
       ],
-      "brandDomain": "iparkmall.co.kr"
+      "brandDomain": "iparkmall.co.kr",
+      "official": {
+        "label": "공식 인스타그램 (포스터·사진)",
+        "url": "https://www.instagram.com/iparkmall/"
+      }
     },
     {
       "id": "shinchan-cheongju-2026",
@@ -225,7 +241,11 @@
       "areas": [
         "청주"
       ],
-      "brandDomain": "ehyundai.com"
+      "brandDomain": "ehyundai.com",
+      "official": {
+        "label": "커넥트현대 청주 지점 안내",
+        "url": "https://www.ehyundai.com/mobile/branch/DP/branch.do?branchType=10&branchCd=B00179000"
+      }
     },
     {
       "id": "angelinus-bbanggomi-seokchon-2026",
@@ -262,7 +282,11 @@
       ],
       "areas": [
         "잠실·송파"
-      ]
+      ],
+      "official": {
+        "label": "공식 인스타그램 (포스터·사진)",
+        "url": "https://www.instagram.com/angelinus_coffee/"
+      }
     },
     {
       "id": "angelinus-bbanggomi-jamsil-2026",
@@ -293,7 +317,11 @@
       ],
       "areas": [
         "잠실·송파"
-      ]
+      ],
+      "official": {
+        "label": "공식 인스타그램 (포스터·사진)",
+        "url": "https://www.instagram.com/angelinus_coffee/"
+      }
     },
     {
       "id": "aot-final-hongdae-2026",
@@ -306,7 +334,7 @@
       "type": "전시",
       "country": "KR",
       "region": "서울 마포",
-      "venue": "서울 마포구 양화로 186 LC TOWER B3",
+      "venue": "DUEX(덕스) 홍대 — 서울 마포구 양화로 186 LC TOWER B3",
       "startDate": "2026-06-19",
       "endDate": "2026-11-01",
       "hours": "매일 12:00 ~ 19:00",
@@ -325,7 +353,12 @@
       ],
       "areas": [
         "홍대"
-      ]
+      ],
+      "official": {
+        "label": "공식 예매 페이지 (인터파크)",
+        "url": "https://tickets.interpark.com/goods/26007894"
+      },
+      "note": "자료마다 정보가 다릅니다. 시작일은 6월 19일 또는 6월 22일, 운영시간은 12:00~19:00 또는 11:00~19:00(마지막 입장 18:20)로 엇갈립니다. 원본 전시와 앙코르(Again) 회차가 섞여 있는 것으로 보입니다. 방문 전 예매 페이지에서 확인하세요."
     },
     {
       "id": "sandbox-cvs-2026",
@@ -358,7 +391,11 @@
       "areas": [
         "여의도"
       ],
-      "brandDomain": "ehyundai.com"
+      "brandDomain": "ehyundai.com",
+      "official": {
+        "label": "더현대 서울 공식 사이트",
+        "url": "https://thehyundaiseoul.ehyundai.com/"
+      }
     },
     {
       "id": "angyeongmandu-2026",
@@ -390,7 +427,11 @@
       "areas": [
         "여의도"
       ],
-      "brandDomain": "ehyundai.com"
+      "brandDomain": "ehyundai.com",
+      "official": {
+        "label": "더현대 서울 공식 사이트",
+        "url": "https://thehyundaiseoul.ehyundai.com/"
+      }
     },
     {
       "id": "breadbarbershop-timesquare-2026",
@@ -423,7 +464,11 @@
       "areas": [
         "영등포"
       ],
-      "brandDomain": "timessquare.co.kr"
+      "brandDomain": "timessquare.co.kr",
+      "official": {
+        "label": "타임스퀘어 공식 인스타그램",
+        "url": "https://www.instagram.com/timessquare.mall/"
+      }
     },
     {
       "id": "emart24-breadbarbershop-2026",
@@ -460,7 +505,11 @@
       "areas": [
         "전국·온라인"
       ],
-      "brandDomain": "emart24.co.kr"
+      "brandDomain": "emart24.co.kr",
+      "official": {
+        "label": "이마트24 공식 페이스북",
+        "url": "https://www.facebook.com/emart24.official/"
+      }
     },
     {
       "id": "atte-pompompurin-2026",
@@ -500,7 +549,11 @@
         "성수",
         "강남"
       ],
-      "brandDomain": "athebeauty.com"
+      "brandDomain": "athebeauty.com",
+      "official": {
+        "label": "아떼 공식 홈페이지",
+        "url": "https://athebeauty.com/"
+      }
     },
     {
       "id": "medicube-joannefriends-2026",
@@ -536,7 +589,11 @@
       ],
       "areas": [
         "성수"
-      ]
+      ],
+      "official": {
+        "label": "공식 인스타그램 (포스터·사진)",
+        "url": "https://www.instagram.com/medicube_global_official/"
+      }
     },
     {
       "id": "ilso-shinchan-2026",
@@ -573,7 +630,11 @@
       "areas": [
         "강남"
       ],
-      "brandDomain": "ilso.kr"
+      "brandDomain": "ilso.kr",
+      "official": {
+        "label": "공식 인스타그램 (포스터·사진)",
+        "url": "https://www.instagram.com/ilso_official/"
+      }
     },
     {
       "id": "casetify-shinchan-busan-2026",
@@ -608,7 +669,11 @@
       "areas": [
         "부산"
       ],
-      "brandDomain": "casetify.com"
+      "brandDomain": "casetify.com",
+      "official": {
+        "label": "CASETiFY 공식 사이트",
+        "url": "https://www.casetify.com/"
+      }
     },
     {
       "id": "loopy-onepiece-2026",
@@ -651,7 +716,11 @@
       "areas": [
         "용산"
       ],
-      "brandDomain": "iparkmall.co.kr"
+      "brandDomain": "iparkmall.co.kr",
+      "official": {
+        "label": "점프샵 공식 X (트위터)",
+        "url": "https://x.com/seoul_jump"
+      }
     },
     {
       "id": "cu-pokemon-cards-2026",
@@ -689,7 +758,11 @@
       "periodText": "2026.05.02(토) 출시 · 한정 수량 소진",
       "areas": [
         "전국·온라인"
-      ]
+      ],
+      "official": {
+        "label": "공식 인스타그램 (포스터·사진)",
+        "url": "https://www.instagram.com/cu_official/"
+      }
     },
     {
       "id": "etude-ganadi-2026",
@@ -726,7 +799,11 @@
       "periodText": "2026.03.09(월) 출시 · 채널별 순차 판매",
       "areas": [
         "전국·온라인"
-      ]
+      ],
+      "official": {
+        "label": "공식 인스타그램 (포스터·사진)",
+        "url": "https://www.instagram.com/etudeofficial/"
+      }
     },
     {
       "id": "kbo-character-2026",
@@ -767,7 +844,11 @@
       "areas": [
         "전국·온라인"
       ],
-      "brandDomain": "koreabaseball.com"
+      "brandDomain": "koreabaseball.com",
+      "official": {
+        "label": "KBO 공식 사이트",
+        "url": "https://www.koreabaseball.com/"
+      }
     },
     {
       "id": "ganadi-drink-2026",
@@ -806,7 +887,11 @@
       "openEnded": true,
       "areas": [
         "전국·온라인"
-      ]
+      ],
+      "official": {
+        "label": "공식 인스타그램 (포스터·사진)",
+        "url": "https://www.instagram.com/cu_official/"
+      }
     }
   ],
   "areas": [

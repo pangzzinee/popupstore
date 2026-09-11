@@ -29,6 +29,10 @@
   "summary": "한두 문장 설명",
   "highlights": ["굿즈나 메뉴 등 볼거리"],
   "note": "확인이 필요한 부분",     // 선택
+  "official": {                   // 상세 화면 상단의 공식 페이지 버튼
+    "label": "공식 인스타그램 (포스터·사진)",
+    "url": "https://www.instagram.com/..."
+  },
   "sources": [
     { "title": "출처 제목", "url": "https://..." }
   ]

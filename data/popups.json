@@ -81,7 +81,8 @@
       ],
       "areas": [
         "용산"
-      ]
+      ],
+      "brandDomain": "minumsa.com"
     },
     {
       "id": "kleague-sanrio-2026",
@@ -117,7 +118,8 @@
       ],
       "areas": [
         "여의도"
-      ]
+      ],
+      "brandDomain": "kleague.com"
     },
     {
       "id": "shinchan-yongsan-2026",
@@ -148,7 +150,8 @@
       ],
       "areas": [
         "용산"
-      ]
+      ],
+      "brandDomain": "iparkmall.co.kr"
     },
     {
       "id": "shinchan-cheongju-2026",
@@ -179,7 +182,8 @@
       ],
       "areas": [
         "청주"
-      ]
+      ],
+      "brandDomain": "ehyundai.com"
     },
     {
       "id": "angelinus-bbanggomi-seokchon-2026",
@@ -311,7 +315,8 @@
       ],
       "areas": [
         "여의도"
-      ]
+      ],
+      "brandDomain": "ehyundai.com"
     },
     {
       "id": "angyeongmandu-2026",
@@ -342,7 +347,8 @@
       ],
       "areas": [
         "여의도"
-      ]
+      ],
+      "brandDomain": "ehyundai.com"
     },
     {
       "id": "breadbarbershop-timesquare-2026",
@@ -374,7 +380,8 @@
       ],
       "areas": [
         "영등포"
-      ]
+      ],
+      "brandDomain": "timessquare.co.kr"
     },
     {
       "id": "emart24-breadbarbershop-2026",
@@ -410,7 +417,8 @@
       ],
       "areas": [
         "전국·온라인"
-      ]
+      ],
+      "brandDomain": "emart24.co.kr"
     },
     {
       "id": "atte-pompompurin-2026",
@@ -449,7 +457,8 @@
       "areas": [
         "성수",
         "강남"
-      ]
+      ],
+      "brandDomain": "athebeauty.com"
     },
     {
       "id": "medicube-joannefriends-2026",
@@ -521,7 +530,8 @@
       ],
       "areas": [
         "강남"
-      ]
+      ],
+      "brandDomain": "ilso.kr"
     },
     {
       "id": "casetify-shinchan-busan-2026",
@@ -555,7 +565,8 @@
       "openEnded": true,
       "areas": [
         "부산"
-      ]
+      ],
+      "brandDomain": "casetify.com"
     },
     {
       "id": "loopy-onepiece-2026",
@@ -597,7 +608,8 @@
       ],
       "areas": [
         "용산"
-      ]
+      ],
+      "brandDomain": "iparkmall.co.kr"
     },
     {
       "id": "cu-pokemon-cards-2026",
@@ -712,7 +724,8 @@
       "periodText": "2026 시즌 (2026.03.28 ~ 10.07) 중 구단별 순차 진행",
       "areas": [
         "전국·온라인"
-      ]
+      ],
+      "brandDomain": "koreabaseball.com"
     },
     {
       "id": "ganadi-drink-2026",

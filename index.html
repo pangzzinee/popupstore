@@ -10,6 +10,132 @@
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
+  <svg class="ill-sprite" aria-hidden="true" focusable="false">
+    <defs>
+      <!-- 손으로 그린 듯 선을 흔드는 필터 -->
+      <filter id="crayon" x="-15%" y="-15%" width="130%" height="130%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="11" result="noise" />
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="4"
+                           xChannelSelector="R" yChannelSelector="G" />
+      </filter>
+      <!-- 크레파스 특유의 거친 질감 -->
+      <filter id="grain" x="-15%" y="-15%" width="130%" height="130%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" seed="3" result="g" />
+        <feColorMatrix in="g" type="saturate" values="0" result="gg" />
+        <feComponentTransfer in="gg" result="mask">
+          <feFuncA type="linear" slope="0.5" intercept="0.18" />
+        </feComponentTransfer>
+        <feComposite in="SourceGraphic" in2="mask" operator="in" />
+      </filter>
+    </defs>
+
+    <!-- 📚 출판·문구 : 쌓인 책 -->
+    <symbol id="ill-publish" viewBox="0 0 100 100">
+      <g fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20 72 L79 70 L80 82 L21 84 Z" fill="currentColor" fill-opacity=".16" />
+        <path d="M26 71 L26 83 M34 71 L34 83" stroke-width="2.4" />
+        <path d="M24 56 L76 53 L78 69 L22 71 Z" fill="currentColor" fill-opacity=".1" />
+        <path d="M31 55 L32 70" stroke-width="2.4" />
+        <path d="M30 25 L50 31 L50 55 L30 49 Z" fill="currentColor" fill-opacity=".16" />
+        <path d="M70 24 L50 31 L50 55 L70 48 Z" fill="currentColor" fill-opacity=".08" />
+        <path d="M50 31 L50 55" />
+        <path d="M36 34 L44 36 M36 41 L44 43 M57 33 L64 31 M57 40 L64 38" stroke-width="2.2" />
+      </g>
+    </symbol>
+
+    <!-- 🥐 카페·베이커리 : 크루아상 -->
+    <symbol id="ill-cafe" viewBox="0 0 100 100">
+      <g fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M17 66 C18 47 33 33 51 33 C69 33 84 47 85 66 C79 70 72 66 68 62
+                 C63 68 56 68 51 63 C46 68 39 68 34 62 C30 66 23 70 17 66 Z"
+              fill="currentColor" fill-opacity=".17" />
+        <path d="M37 41 C38 49 38 56 34 62" stroke-width="2.6" />
+        <path d="M51 36 C51 46 51 54 51 63" stroke-width="2.6" />
+        <path d="M65 41 C64 49 64 56 68 62" stroke-width="2.6" />
+        <path d="M23 60 C22 53 25 47 29 44" stroke-width="2.2" />
+        <path d="M79 60 C80 53 77 47 73 44" stroke-width="2.2" />
+      </g>
+    </symbol>
+
+    <!-- 🍰 식음료 : 굿즈 병뚜껑 달린 음료병 -->
+    <symbol id="ill-food" viewBox="0 0 100 100">
+      <g fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M41 22 L60 21 L60 33 C60 39 67 42 67 52 L68 82 C68 86 65 88 61 88
+                 L41 89 C37 89 34 87 34 83 L33 53 C33 43 40 39 40 33 Z"
+              fill="currentColor" fill-opacity=".14" />
+        <path d="M39 18 C39 15 42 14 50 14 C58 13 62 15 62 18 C62 21 58 23 50 23 C42 23 39 21 39 18 Z"
+              fill="currentColor" fill-opacity=".26" />
+        <path d="M34 57 L67 56 M35 72 L68 71" stroke-width="2.4" />
+        <path d="M43 63 C45 61 48 61 50 63 M56 62 C58 60 61 60 63 62" stroke-width="2.2" />
+        <circle cx="46" cy="18" r="1.6" fill="currentColor" stroke="none" />
+        <circle cx="55" cy="18" r="1.6" fill="currentColor" stroke="none" />
+      </g>
+    </symbol>
+
+    <!-- 🏪 편의점·유통 : 차양이 있는 가게 -->
+    <symbol id="ill-cvs" viewBox="0 0 100 100">
+      <g fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M19 44 L81 42 L83 86 L21 88 Z" fill="currentColor" fill-opacity=".1" />
+        <path d="M16 43 L24 26 L77 24 L84 41 Z" fill="currentColor" fill-opacity=".22" />
+        <path d="M33 25 L30 42 M50 25 L50 42 M67 24 L70 42" stroke-width="2.4" />
+        <path d="M30 57 L47 56 L47 73 L30 74 Z" stroke-width="2.6" />
+        <path d="M57 58 L74 57 L75 87 L58 88 Z" stroke-width="2.6" fill="currentColor" fill-opacity=".12" />
+        <path d="M62 72 L63 76" stroke-width="2.4" />
+      </g>
+    </symbol>
+
+    <!-- 💄 뷰티 : 립스틱 -->
+    <symbol id="ill-beauty" viewBox="0 0 100 100">
+      <g fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M38 47 L64 44 L67 86 C67 89 65 90 62 90 L42 92 C39 92 37 90 37 87 Z"
+              fill="currentColor" fill-opacity=".13" />
+        <path d="M37 58 L66 55" stroke-width="2.6" />
+        <path d="M41 30 C41 24 47 14 55 13 C61 13 63 18 63 24 L64 44 L39 47 Z"
+              fill="currentColor" fill-opacity=".3" />
+        <path d="M45 70 C47 68 50 68 52 70" stroke-width="2.2" />
+        <path d="M75 30 C78 33 78 37 75 40 M78 24 L80 26" stroke-width="2.2" />
+      </g>
+    </symbol>
+
+    <!-- 👜 패션·잡화 : 폰 케이스 -->
+    <symbol id="ill-fashion" viewBox="0 0 100 100">
+      <g fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M33 13 L68 11 C73 11 76 14 76 19 L79 82 C79 87 76 90 71 90
+                 L36 92 C31 92 28 89 28 84 L25 21 C25 16 28 13 33 13 Z"
+              fill="currentColor" fill-opacity=".13" />
+        <path d="M37 22 L60 21 C64 21 66 23 66 27 L67 36 C67 40 65 42 61 42
+                 L38 43 C34 43 32 41 32 37 L31 28 C31 24 33 22 37 22 Z"
+              fill="currentColor" fill-opacity=".22" />
+        <circle cx="41" cy="31" r="4.4" stroke-width="2.8" />
+        <circle cx="56" cy="30" r="4.4" stroke-width="2.8" />
+        <path d="M38 58 C44 54 52 54 58 57 M40 69 C46 66 53 66 59 68" stroke-width="2.4" />
+      </g>
+    </symbol>
+
+    <!-- ⚽ 스포츠 : 공 -->
+    <symbol id="ill-sports" viewBox="0 0 100 100">
+      <g fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="50" cy="52" r="34" fill="currentColor" fill-opacity=".12" />
+        <path d="M50 33 L64 43 L59 60 L41 60 L36 43 Z" fill="currentColor" fill-opacity=".3" />
+        <path d="M50 33 L50 19 M64 43 L78 38 M59 60 L68 73 M41 60 L32 73 M36 43 L22 38" stroke-width="2.6" />
+        <path d="M22 38 C18 45 17 53 19 61 M78 38 C82 45 83 53 81 61" stroke-width="2.2" />
+      </g>
+    </symbol>
+
+    <!-- 🎪 전시·엔터 : 천막 -->
+    <symbol id="ill-culture" viewBox="0 0 100 100">
+      <g fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M50 21 C31 27 19 42 17 58 L83 55 C80 39 68 26 50 21 Z"
+              fill="currentColor" fill-opacity=".2" />
+        <path d="M17 58 L21 86 L79 83 L83 55 Z" fill="currentColor" fill-opacity=".09" />
+        <path d="M50 22 L50 84" stroke-width="2.6" />
+        <path d="M32 27 C33 42 32 60 30 85 M68 27 C67 42 68 59 70 83" stroke-width="2.4" />
+        <path d="M50 60 C43 60 39 68 39 85 M50 60 C57 60 61 67 61 84" stroke-width="2.6" />
+        <path d="M50 21 L50 11 L62 15 L50 19" stroke-width="2.6" fill="currentColor" fill-opacity=".3" />
+      </g>
+    </symbol>
+  </svg>
+
   <a class="skip-link" href="#main">본문으로 건너뛰기</a>
 
   <header class="site-header">

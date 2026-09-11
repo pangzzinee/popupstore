@@ -79,6 +79,26 @@
     return { hue: (h % 12) * 30 + 14, pattern: Math.floor(h / 12) % 3 };
   }
 
+  // 브랜드 파비콘. 협업 브랜드를 식별하는 용도(지명적 사용)라 로고 자체를
+  // 재가공하지 않는다. 불러오지 못하면 조용히 사라진다.
+  function brandLogo(p) {
+    if (!p.brandDomain) return null;
+    const img = el('img', 'brand-logo');
+    img.src = `https://icons.duckduckgo.com/ip3/${p.brandDomain}.ico`;
+    img.alt = '';
+    img.loading = 'lazy';
+    img.addEventListener('error', () => img.remove());
+    return img;
+  }
+
+  function pairLine(p, cls) {
+    const line = el('p', cls);
+    const logo = brandLogo(p);
+    if (logo) line.append(logo);
+    line.append(document.createTextNode(`${(p.ip || []).join(' · ')} × ${p.brand}`));
+    return line;
+  }
+
   // p.image가 있으면 실제 사진, 없으면 자동 생성 카드
   function thumb(p, big) {
     const cat = state.catMap.get(p.category);
@@ -88,7 +108,15 @@
     box.style.setProperty('--h', hue);
     box.dataset.pat = pattern;
 
-    box.append(el('span', 'thumb-emoji', cat ? cat.emoji : '🎪'));
+    // 이모지 대신 직접 그린 SVG 일러스트 (index.html의 스프라이트)
+    const ill = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    ill.setAttribute('class', 'thumb-ill');
+    ill.setAttribute('viewBox', '0 0 100 100');
+    ill.setAttribute('aria-hidden', 'true');
+    const use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+    use.setAttribute('href', `#ill-${p.category}`);
+    ill.append(use);
+    box.append(ill);
     box.append(el('span', 'thumb-ip', (p.ip || []).join(' · ') || p.brand));
 
     if (p.image) {
@@ -272,7 +300,7 @@
       const body = el('div', 'card-body');
       body.append(
         el('h3', 'card-title', p.title),
-        el('p', 'card-pair', `${(p.ip || []).join(' · ')} × ${p.brand}`),
+        pairLine(p, 'card-pair'),
         meta,
         el('p', 'card-more', '자세히 보기 →'),
       );
@@ -354,7 +382,7 @@
     const h = el('h3', 'modal-title', p.title);
     h.id = 'modalTitle';
     body.append(h);
-    body.append(el('p', 'modal-pair', `${(p.ip || []).join(' · ')} × ${p.brand}`));
+    body.append(pairLine(p, 'modal-pair'));
     if (p.summary) body.append(el('p', 'modal-summary', p.summary));
 
     const info = el('div', 'info-table');

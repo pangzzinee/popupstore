@@ -49,7 +49,7 @@
   "popups": [
     {
       "id": "minumsa-todaycute-2026",
-      "title": "문장 너머의 세계",
+      "title": "문장 너머의 세계 — 용산",
       "ip": [
         "오늘의귀여움"
       ],
@@ -62,7 +62,7 @@
       "startDate": "2026-08-11",
       "endDate": "2026-08-26",
       "hours": "10:30 ~ 21:30 (1시간 간격 회차 운영)",
-      "reservation": "회차 예약",
+      "reservation": "카카오톡 사전예약 / 현장예약",
       "summary": "민음사 도서와 캐릭터 브랜드 '오늘의귀여움'이 만난 팝업. 세계문학전집을 캐릭터 일러스트로 리커버한 한정판이 화제가 됐습니다.",
       "highlights": [
         "캐릭터 리커버 세계문학전집 (자기만의 방·폭풍의 언덕·오만과 편견 등)",
@@ -82,7 +82,49 @@
       "areas": [
         "용산"
       ],
-      "brandDomain": "minumsa.com"
+      "brandDomain": "minumsa.com",
+      "note": "8월 13일부터 종료일까지 21시 30분 이후 워크인 입장 불가였습니다."
+    },
+    {
+      "id": "minumsa-todaycute-busan-2026",
+      "title": "문장 너머의 세계: 몰입의 바다 — 부산",
+      "ip": [
+        "오늘의귀여움"
+      ],
+      "brand": "민음사",
+      "brandDomain": "minumsa.com",
+      "category": "publish",
+      "type": "팝업스토어",
+      "country": "KR",
+      "region": "부산",
+      "areas": [
+        "부산"
+      ],
+      "venue": "부산 삼정타워 7F 팝업존",
+      "startDate": "2026-08-28",
+      "endDate": "2026-09-30",
+      "hours": "일~목 11:00~22:00 / 금·토 11:00~22:30",
+      "reservation": "카카오톡 사전예약 / 현장예약",
+      "summary": "용산 팝업에 이어지는 두 번째 편. '발견'에서 시작해 '몰입'으로 이어지는 독서의 여정을 따라가며, 문학이 열어주는 또 하나의 세계를 바다 테마로 풀어냈습니다.",
+      "highlights": [
+        "용산편 〈문장 너머의 세계〉의 후속 테마 \"몰입의 바다\"",
+        "캐릭터 시선으로 재해석한 패러렐 커버 도서",
+        "키링·머그·무지노트·보드게임 등 굿즈"
+      ],
+      "sources": [
+        {
+          "title": "팝가 - 문장 너머의 세계: 몰입의 바다 (부산)",
+          "url": "https://popga.co.kr/popup/8583"
+        },
+        {
+          "title": "팝플리 - 문장 너머의 세계: 몰입의 바다",
+          "url": "https://popply.co.kr/popup/5755"
+        },
+        {
+          "title": "민음사 공식 X - 팝업 입장 안내",
+          "url": "https://x.com/minumsa_books/status/2087793758817665071"
+        }
+      ]
     },
     {
       "id": "kleague-sanrio-2026",

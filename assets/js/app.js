@@ -88,6 +88,25 @@
     return { hue: (h % 12) * 30 + 14, pattern: Math.floor(h / 12) % 3 };
   }
 
+  // 파비콘 주소 후보. 큰 자리에 쓸 땐 해상도를 키워 요청한다.
+  function logoSources(domain, size) {
+    return [
+      `https://www.google.com/s2/favicons?domain=${domain}&sz=${size}`,
+      `https://icons.duckduckgo.com/ip3/${domain}.ico`,
+    ];
+  }
+
+  // 후보 주소를 차례로 시도하고, 전부 실패하면 onGiveUp을 부른다.
+  function loadLogo(img, sources, onGiveUp) {
+    let i = 0;
+    img.addEventListener('error', () => {
+      i += 1;
+      if (i < sources.length) img.src = sources[i];
+      else onGiveUp();
+    });
+    img.src = sources[0];
+  }
+
   // 브랜드 이름에서 머리글자를 뽑는다. 괄호 안 설명은 버린다.
   function initials(name) {
     const head = String(name || '').replace(/[（(].*$/, '').trim();
@@ -106,20 +125,11 @@
     mark.style.setProperty('--h', paletteOf(p.brand).hue);
     if (!p.brandDomain) return mark;
 
-    const tries = [
-      `https://www.google.com/s2/favicons?domain=${p.brandDomain}&sz=64`,
-      `https://icons.duckduckgo.com/ip3/${p.brandDomain}.ico`,
-    ];
+    const tries = logoSources(p.brandDomain, 64);
     const img = el('img', 'brand-logo');
     img.alt = '';
     img.loading = 'lazy';
-    let i = 0;
-    img.addEventListener('error', () => {
-      i += 1;
-      if (i < tries.length) img.src = tries[i];
-      else img.remove();          // 머리글자 칩이 그대로 남는다
-    });
-    img.src = tries[0];
+    loadLogo(img, tries, () => img.remove());   // 머리글자 칩이 그대로 남는다
     mark.append(img);
     return mark;
   }
@@ -149,6 +159,21 @@
     use.setAttribute('href', `#ill-${p.category}`);
     ill.append(use);
     box.append(ill);
+    // 브랜드 로고를 큼직하게. 못 불러오면 통째로 사라지고 IP 이름만 남는다.
+    if (p.brandDomain) {
+      const plate = el('span', 'thumb-logo');
+      const img = el('img');
+      img.alt = `${p.brand} 로고`;
+      img.loading = 'lazy';
+      loadLogo(img, logoSources(p.brandDomain, big ? 256 : 128), () => {
+        plate.remove();
+        box.classList.remove('has-logo');   // IP 이름을 원래 크기로 되돌린다
+      });
+      plate.append(img);
+      box.append(plate);
+      box.classList.add('has-logo');
+    }
+
     box.append(el('span', 'thumb-ip', (p.ip || []).join(' · ') || p.brand));
 
     if (p.image) {

@@ -1,8 +1,9 @@
 {
   "meta": {
-    "updatedAt": "2026-09-11",
+    "updatedAt": "2026-09-13",
     "description": "캐릭터 IP × 브랜드 콜라보 팝업/협업 아카이브. 항목을 추가하려면 data/README.md를 참고하세요.",
-    "disclaimer": "운영 기간·시간은 주최 측 사정으로 변경될 수 있습니다. 방문 전 공식 채널에서 반드시 재확인하세요."
+    "disclaimer": "운영 기간·시간은 주최 측 사정으로 변경될 수 있습니다. 방문 전 공식 채널에서 반드시 재확인하세요.",
+    "coordsNote": "좌표는 지도 표시와 거리 계산을 위한 대략값입니다. 정확한 위치는 공식 안내를 확인하세요."
   },
   "categories": [
     {
@@ -91,7 +92,12 @@
         "label": "공식 인스타그램 (포스터·사진)",
         "url": "https://www.instagram.com/minumsa_books/"
       },
-      "ipOrigin": "KR"
+      "ipOrigin": "KR",
+      "coords": {
+        "lat": 35.1554,
+        "lng": 129.0593,
+        "name": "부산 삼정타워"
+      }
     },
     {
       "id": "angelinus-bbanggomi-seokchon-2026",
@@ -133,7 +139,12 @@
         "label": "공식 인스타그램 (포스터·사진)",
         "url": "https://www.instagram.com/angelinus_coffee/"
       },
-      "ipOrigin": "KR"
+      "ipOrigin": "KR",
+      "coords": {
+        "lat": 37.5093,
+        "lng": 127.102,
+        "name": "엔제리너스 석촌호수 DI점"
+      }
     },
     {
       "id": "angelinus-bbanggomi-jamsil-2026",
@@ -169,7 +180,12 @@
         "label": "공식 인스타그램 (포스터·사진)",
         "url": "https://www.instagram.com/angelinus_coffee/"
       },
-      "ipOrigin": "KR"
+      "ipOrigin": "KR",
+      "coords": {
+        "lat": 37.5133,
+        "lng": 127.1028,
+        "name": "롯데월드몰"
+      }
     },
     {
       "id": "aot-final-hongdae-2026",
@@ -207,7 +223,12 @@
         "url": "https://tickets.interpark.com/goods/26007894"
       },
       "note": "자료마다 정보가 다릅니다. 시작일은 6월 19일 또는 6월 22일, 운영시간은 12:00~19:00 또는 11:00~19:00(마지막 입장 18:20)로 엇갈립니다. 원본 전시와 앙코르(Again) 회차가 섞여 있는 것으로 보입니다. 방문 전 예매 페이지에서 확인하세요.",
-      "ipOrigin": "JP"
+      "ipOrigin": "JP",
+      "coords": {
+        "lat": 37.5556,
+        "lng": 126.9237,
+        "name": "DUEX 홍대"
+      }
     },
     {
       "id": "casetify-shinchan-busan-2026",
@@ -247,7 +268,12 @@
         "label": "CASETiFY 공식 사이트",
         "url": "https://www.casetify.com/"
       },
-      "ipOrigin": "JP"
+      "ipOrigin": "JP",
+      "coords": {
+        "lat": 35.1688,
+        "lng": 129.1294,
+        "name": "신세계 센텀시티"
+      }
     },
     {
       "id": "kbo-character-2026",
@@ -382,7 +408,12 @@
           "title": "중소기업투데이 - 헬로키티 지역 마케팅",
           "url": "http://www.sbiztoday.kr/news/articleView.html?idxno=26967"
         }
-      ]
+      ],
+      "coords": {
+        "lat": 37.5445,
+        "lng": 127.0557,
+        "name": "올리브영N 성수"
+      }
     },
     {
       "id": "ediya-sanrio-2026",

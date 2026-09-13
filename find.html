@@ -33,11 +33,14 @@
           <input type="search" id="search" placeholder="캐릭터, 브랜드, 장소로 검색 (예: 산리오, 더현대)"
                  aria-label="캐릭터, 브랜드, 장소 검색" autocomplete="off" />
         </div>
+        <button type="button" class="near-btn" id="nearBtn" aria-pressed="false">📍 내 주변</button>
         <div class="view-toggle" role="tablist" aria-label="보기 방식">
           <button type="button" role="tab" class="view-btn is-active" data-view="list" aria-selected="true">목록</button>
           <button type="button" role="tab" class="view-btn" data-view="calendar" aria-selected="false">캘린더</button>
         </div>
       </div>
+
+      <p class="place-tag" id="placeTag" hidden></p>
 
       <div class="filter-group" role="group" aria-label="진행 상태 필터">
         <span class="filter-label">상태</span>
@@ -64,6 +67,7 @@
             <option value="soonest">임박한 순</option>
             <option value="latest">최근 시작한 순</option>
             <option value="name">이름순</option>
+            <option value="near">가까운 순</option>
           </select>
         </label>
       </div>
@@ -92,8 +96,12 @@
     </div>
   </div>
 
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/place.js"></script>
   <script src="assets/js/sprite.js"></script>
   <script src="assets/js/ui.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script src="assets/js/map.js"></script>
   <script src="assets/js/find.js"></script>
 </body>
 </html>

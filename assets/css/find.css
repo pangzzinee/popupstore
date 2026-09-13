@@ -346,3 +346,42 @@
   .badge { font-size: 10px; padding: 3px 7px; }
   .brand-badge { width: 16px; height: 16px; font-size: 9px; }
 }
+
+/* ---------- 내 주변 ---------- */
+.near-btn {
+  flex: none; padding: 11px 18px; border-radius: 999px; cursor: pointer;
+  border: 1.5px solid var(--line-2); background: var(--paper);
+  font-size: 13.5px; font-weight: 700; color: var(--ink-2);
+  box-shadow: var(--shadow); white-space: nowrap;
+  transition: transform .2s var(--ease-out), background .18s, color .18s, border-color .18s;
+}
+.near-btn:hover { transform: translateY(-2px); border-color: var(--pink); color: var(--pink-ink); }
+.near-btn.is-on { background: var(--pink); border-color: var(--pink); color: #fff; box-shadow: var(--shadow-pink); }
+.near-btn:disabled { opacity: .6; cursor: progress; }
+
+.place-tag { font-size: 12.5px; color: var(--ink-3); padding-left: 2px; }
+.place-tag a { color: var(--pink-ink); font-weight: 700; }
+
+.card-where .dist {
+  margin-left: 5px; color: var(--pink-ink); font-weight: 700;
+}
+
+/* ---------- 지도 ---------- */
+.map-block { border-radius: var(--r); overflow: hidden; border: 1px solid var(--line); }
+.map-canvas {
+  position: relative; height: 180px; background: var(--sunken);
+  display: grid; place-items: center;
+}
+.map-fallback {
+  display: grid; justify-items: center; gap: 6px;
+  font-size: 13px; color: var(--ink-3); text-align: center; padding: 0 18px;
+}
+.map-pin { font-size: 28px; animation: pinDrop 2.4s var(--ease-soft) infinite; }
+@keyframes pinDrop { 0%, 70%, 100% { transform: translateY(0); } 80% { transform: translateY(-7px); } }
+.map-links { display: flex; border-top: 1px solid var(--line); }
+.map-link {
+  flex: 1; padding: 12px; text-align: center; font-size: 13.5px; font-weight: 700;
+  color: var(--ink-2); background: var(--paper); transition: background .16s, color .16s;
+}
+.map-link + .map-link { border-left: 1px solid var(--line); }
+.map-link:hover { background: var(--pink-soft); color: var(--pink-ink); }

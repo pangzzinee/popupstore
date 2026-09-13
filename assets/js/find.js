@@ -31,6 +31,7 @@
     query: '',
     sort: 'soonest',
     view: 'list',
+    near: false,
     cursor: startOfMonth(new Date()),
   };
 
@@ -220,7 +221,15 @@
     const now = today();
     const order = { live: 0, soon: 1, undated: 2, ended: 3 };
     const copy = [...list];
-    if (state.sort === 'name') {
+    if (state.sort === 'near') {
+      const me = window.Place?.get();
+      copy.sort((a, b) => {
+        const da = a.coords && me ? Place.distanceKm(me, a.coords) : Infinity;
+        const db = b.coords && me ? Place.distanceKm(me, b.coords) : Infinity;
+        if (da !== db) return da - db;
+        return order[statusOf(a)] - order[statusOf(b)];
+      });
+    } else if (state.sort === 'name') {
       copy.sort((a, b) => a.title.localeCompare(b.title, 'ko'));
     } else if (state.sort === 'latest') {
       copy.sort((a, b) => (b.startDate || '').localeCompare(a.startDate || ''));
@@ -345,12 +354,24 @@
         el('h3', 'card-title', p.title),
         pairLine(p, 'card-pair'),
         el('p', 'card-when', period(p)),
-        el('p', 'card-where', p.venue || p.region || ''),
+        whereLine(p),
       );
       card.append(th, body);
       card.addEventListener('click', () => openModal(p));
       box.append(card);
     });
+  }
+
+  // 장소 줄. 내 동네가 있고 좌표를 아는 팝업이면 거리도 같이 보여준다.
+  function whereLine(p) {
+    const line = el('p', 'card-where');
+    line.append(document.createTextNode(p.venue || p.region || ''));
+    const me = window.Place?.get();
+    if (me && p.coords) {
+      const km = Place.distanceKm(me, p.coords);
+      line.append(el('span', 'dist', `· ${Place.fmtDistance(km)}`));
+    }
+    return line;
   }
 
   function row(k, v) {
@@ -427,6 +448,29 @@
     body.append(h);
     body.append(pairLine(p, 'modal-pair'));
     if (p.summary) body.append(el('p', 'modal-summary', p.summary));
+
+    // 지도 — 좌표를 아는 팝업만
+    if (p.coords && window.MapKit) {
+      const block = el('div', 'map-block');
+      const canvas = el('div', 'map-canvas');
+      canvas.setAttribute('aria-label', `${p.venue} 위치 지도`);
+      const fallback = el('div', 'map-fallback');
+      fallback.append(el('span', 'map-pin', '📍'), el('span', null, p.coords.name || p.venue));
+      canvas.append(fallback);
+
+      const l = MapKit.links(p);
+      const bar = el('div', 'map-links');
+      [['🗺️ 지도에서 보기', l.view], ['🚶 길찾기', l.to]].forEach(([label, href]) => {
+        const a = el('a', 'map-link', label);
+        a.href = href; a.target = '_blank'; a.rel = 'noopener noreferrer';
+        bar.append(a);
+      });
+
+      block.append(canvas, bar);
+      body.append(section('위치', block));
+      // 지도가 그려지면 대체 표시를 치운다
+      MapKit.render(canvas, p).then((ok) => { if (ok) fallback.remove(); });
+    }
 
     if (p.official?.url) {
       const a = el('a', 'official-link');
@@ -510,8 +554,35 @@
 
     $('#sort').addEventListener('change', (e) => {
       state.sort = e.target.value;
+      state.near = e.target.value === 'near';
       renderList();
     });
+
+    const nearBtn = $('#nearBtn');
+    nearBtn?.addEventListener('click', async () => {
+      let me = window.Place?.get();
+      if (!me) {
+        nearBtn.disabled = true;
+        nearBtn.textContent = '위치 확인 중…';
+        try {
+          me = await Place.locate();
+          Place.set(me);
+        } catch {
+          nearBtn.disabled = false;
+          nearBtn.textContent = '📍 내 주변';
+          showPlaceHint();
+          return;
+        }
+        nearBtn.disabled = false;
+      }
+      state.near = !state.near;
+      state.sort = state.near ? 'near' : 'soonest';
+      $('#sort').value = state.sort;
+      paintNear();
+      render();
+    });
+
+    window.addEventListener('place:change', () => { paintNear(); render(); });
 
     document.querySelectorAll('.view-btn').forEach((btn) => {
       btn.addEventListener('click', () => {
@@ -547,6 +618,27 @@
     });
   }
 
+  function paintNear() {
+    const btn = $('#nearBtn');
+    if (!btn) return;
+    const me = window.Place?.get();
+    btn.classList.toggle('is-on', state.near);
+    btn.textContent = state.near ? `📍 ${me?.label || '내 주변'} 기준` : '📍 내 주변';
+    btn.setAttribute('aria-pressed', String(state.near));
+    const tag = $('#placeTag');
+    if (tag) {
+      tag.textContent = me ? `내 동네: ${me.label}` : '';
+      tag.hidden = !me;
+    }
+  }
+
+  function showPlaceHint() {
+    const tag = $('#placeTag');
+    if (!tag) return;
+    tag.hidden = false;
+    tag.innerHTML = '위치를 못 받았어요. <a href="my.html">마이페이지에서 내 동네 고르기 →</a>';
+  }
+
   /* ---------- boot ---------- */
   async function init() {
     let data;
@@ -571,6 +663,7 @@
     if (note) note.textContent = data.meta?.disclaimer || '';
 
     bind();
+    paintNear();
     render();
   }
 

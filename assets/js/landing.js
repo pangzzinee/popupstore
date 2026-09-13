@@ -36,6 +36,19 @@
     return n === 0 ? '오늘 마감' : `${n}일 남음`;
   }
 
+  // 같은 업종이 여러 건이면 카드가 똑같아 보인다. IP 이름으로 변종을 나눠 쓴다.
+  const ILL_VARIANTS = {
+    fashion: ['ill-fashion', 'ill-fashion2'],
+    food:    ['ill-food', 'ill-food2'],
+    cafe:    ['ill-cafe', 'ill-cafe2'],
+  };
+  function illFor(p) {
+    if (p.ill) return p.ill;
+    const list = ILL_VARIANTS[p.category];
+    if (!list) return `ill-${p.category}`;
+    return list[hueOf((p.ip || [])[0] || p.brand) % list.length];
+  }
+
   const el = (tag, cls, text) => {
     const n = document.createElement(tag);
     if (cls) n.className = cls;
@@ -54,7 +67,7 @@
     svg.setAttribute('viewBox', '0 0 100 100');
     svg.setAttribute('aria-hidden', 'true');
     const use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
-    use.setAttribute('href', `#ill-${p.category}`);
+    use.setAttribute('href', `#${illFor(p)}`);
     svg.append(use);
     thumb.append(svg, el('span', 'lcard-live', '진행 중'));
 

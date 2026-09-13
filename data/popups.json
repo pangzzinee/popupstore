@@ -144,7 +144,8 @@
         "lat": 37.5093,
         "lng": 127.102,
         "name": "엔제리너스 석촌호수 DI점"
-      }
+      },
+      "ill": "ill-cafe"
     },
     {
       "id": "angelinus-bbanggomi-jamsil-2026",
@@ -185,7 +186,8 @@
         "lat": 37.5133,
         "lng": 127.1028,
         "name": "롯데월드몰"
-      }
+      },
+      "ill": "ill-cafe"
     },
     {
       "id": "aot-final-hongdae-2026",
@@ -273,7 +275,8 @@
         "lat": 35.1688,
         "lng": 129.1294,
         "name": "신세계 센텀시티"
-      }
+      },
+      "ill": "ill-fashion"
     },
     {
       "id": "kbo-character-2026",
@@ -363,7 +366,8 @@
         "label": "공식 인스타그램 (포스터·사진)",
         "url": "https://www.instagram.com/cu_official/"
       },
-      "ipOrigin": "KR"
+      "ipOrigin": "KR",
+      "ill": "ill-food"
     },
     {
       "id": "oliveyoung-sanrio-2026",
@@ -388,9 +392,10 @@
       "endDate": "2026-09-30",
       "hours": "매장 운영시간에 준함",
       "reservation": "매장 방문",
-      "summary": "헬로키티에 지역 먹거리를 접목한 '지역 헬로키티'로 전국 매장을 관광 콘텐츠처럼 꾸민 한 달짜리 프로모션. 올리브영N 성수 1층은 'OY CITY' 콘셉트의 체험 공간으로 운영됩니다.",
+      "summary": "헬로키티에 지역 먹거리를 접목한 '지역 헬로키티'로 전국 매장을 관광 콘텐츠처럼 꾸민 한 달짜리 프로모션. 81개 브랜드 321종이 참여하는 대형 협업입니다.",
       "highlights": [
         "올리브영N 성수 1F 'OLIVE YOUNG CITY TOUR' 체험 공간 (~9.30)",
+        "81개 브랜드 321종 참여 — 라보에이치(한교동), 미쟝센(포차코), 한율(헬로키티), 리필드(시나모롤), 더마비(포차코) 등",
         "9.7~ 지역 헬로키티 부채 전 구매 고객 랜덤 증정",
         "9.11~ '교복 헬로키티', 9.18~ '한복 헬로키티' 컨테이너 굿즈",
         "9.18~24 산리오와 함께하는 가을 기프트 컬렉션"
@@ -407,6 +412,10 @@
         {
           "title": "중소기업투데이 - 헬로키티 지역 마케팅",
           "url": "http://www.sbiztoday.kr/news/articleView.html?idxno=26967"
+        },
+        {
+          "title": "아모레퍼시픽 - 라보에이치·미쟝센·한율 협업 기획상품",
+          "url": "https://www.apgroup.com/int/ko/news/2026-08-28-2.html"
         }
       ],
       "coords": {
@@ -459,7 +468,8 @@
           "title": "이슈투데이 - 산리오캐릭터즈와 네 번째 협업",
           "url": "https://www.issuetoday.co.kr/news/article.html?no=59264"
         }
-      ]
+      ],
+      "ill": "ill-cafe2"
     },
     {
       "id": "starbucks-peanuts-2026",
@@ -504,6 +514,184 @@
           "title": "일요주간 - 고구마·밤·피너츠로 가을 시즌 공략",
           "url": "https://www.ilyoweekly.co.kr/news/newsview.php?ncode=1065594819282249"
         }
+      ],
+      "ill": "ill-cafe2"
+    },
+    {
+      "id": "momstouch-demonslayer-2026",
+      "title": "맘스터치 × 귀멸의 칼날",
+      "ip": [
+        "귀멸의 칼날"
+      ],
+      "ipOrigin": "JP",
+      "brand": "맘스터치",
+      "brandDomain": "momstouch.co.kr",
+      "category": "food",
+      "type": "상품 콜라보",
+      "country": "KR",
+      "region": "전국",
+      "areas": [
+        "전국·온라인"
+      ],
+      "venue": "맘스터치 전국 매장 · 자체 앱 · 배달 앱",
+      "startDate": "2026-09-01",
+      "endDate": "2026-09-28",
+      "hours": "매장 운영시간에 준함",
+      "reservation": "매장·앱 구매",
+      "summary": "극장판 무한성편 흥행에 맞춰 나온 한정판 굿즈 세트. 버거 세트를 사면 LED 스탠드나 일륜도 키링이 함께 옵니다.",
+      "highlights": [
+        "LED 아크릴 스탠드 세트 25,200원 (빅싸이순살 + 싸이버거 + 펩시)",
+        "메탈 일륜도 키링 세트 20,700원 (싸이버거 + 더블불고기버거 + 케이준감자 + 펩시)",
+        "한정 수량 — 매장별 재고 소진 시 조기 종료"
+      ],
+      "note": "굿즈는 한정 수량이라 기간 내에도 매장별로 먼저 소진될 수 있습니다.",
+      "official": {
+        "label": "맘스터치 공식 사이트",
+        "url": "https://www.momstouch.co.kr/"
+      },
+      "sources": [
+        {
+          "title": "뉴스 - 맘스터치X귀멸의 칼날 한정판 굿즈 일정·기간·가격",
+          "url": "https://v.daum.net/v/20260906000709324"
+        },
+        {
+          "title": "스페셜경제 - 맘스터치, 귀멸의 칼날과 맞손",
+          "url": "https://www.speconomy.com/news/articleView.html?idxno=417368"
+        }
+      ],
+      "ill": "ill-food2"
+    },
+    {
+      "id": "spao-deathnote-2026",
+      "title": "스파오 × 데스노트 컬렉션",
+      "ip": [
+        "데스노트"
+      ],
+      "ipOrigin": "JP",
+      "brand": "스파오",
+      "brandDomain": "spao.com",
+      "category": "fashion",
+      "type": "상품 콜라보",
+      "country": "KR",
+      "region": "전국 (오프라인: 서울 성동)",
+      "areas": [
+        "성수",
+        "전국·온라인"
+      ],
+      "venue": "스파오닷컴 · 무신사 · 스파오 성수점",
+      "startDate": "2026-09-05",
+      "endDate": null,
+      "openEnded": true,
+      "hours": "온라인 9월 5일 오전 11시 오픈 / 성수점은 매장 오픈 시간부터",
+      "reservation": "온라인·매장 구매",
+      "summary": "라이토와 L, 미사의 그래픽을 담은 11종 컬렉션. 실제 데스노트를 닮은 공책 키링까지 나왔습니다.",
+      "highlights": [
+        "라이토·L·미사 그래픽 반팔 티셔츠",
+        "후드 집업 (백 그래픽), 긴팔 파자마, 담요",
+        "데스노트 공책 키링",
+        "온라인 9.5 오전 11시 — 스파오닷컴·무신사 동시 오픈"
+      ],
+      "note": "종료일이 공개되지 않았습니다. 인기 상품은 조기 품절될 수 있어요.",
+      "official": {
+        "label": "스파오 컬래버레이션 페이지",
+        "url": "https://www.spao.com/h/collaboration"
+      },
+      "sources": [
+        {
+          "title": "스파오 공식 X - 데스노트 컬렉션 예고",
+          "url": "https://x.com/SpaoKr/status/2093185866453950527"
+        }
+      ],
+      "ill": "ill-fashion2"
+    },
+    {
+      "id": "kakaofriends-pompompurin-2026",
+      "title": "카카오프렌즈 × 폼폼푸린 K-제철 음식",
+      "ip": [
+        "산리오캐릭터즈",
+        "폼폼푸린"
+      ],
+      "ipOrigin": "JP",
+      "brand": "카카오프렌즈",
+      "category": "fashion",
+      "type": "상품 콜라보",
+      "country": "KR",
+      "region": "전국 (플래그십: 서울 마포)",
+      "areas": [
+        "홍대",
+        "전국·온라인"
+      ],
+      "venue": "온라인 프렌즈샵 · 홍대 플래그십 · 백화점 입점 매장 · 카카오톡 선물하기 · 무신사 · 29CM",
+      "startDate": "2026-08-20",
+      "endDate": null,
+      "openEnded": true,
+      "hours": "매장 운영시간에 준함",
+      "reservation": "온라인·매장 구매",
+      "summary": "'폼폼푸린이 춘식이와 함께 경험하는 한국의 디저트 문화'가 콘셉트. 갓 수확한 옥수수와 감자를 테마로 두 캐릭터가 농장에서 새참을 먹는 장면으로 풀었습니다.",
+      "highlights": [
+        "굿즈 13종 — 중형 인형, 키링 인형, 롱 필로우, 클릭커",
+        "고무장갑, 포켓 장바구니, 미숫가루 잔 같은 아이디어 상품",
+        "2026 산리오 캐릭터 대상 1위 폼폼푸린과의 협업"
+      ],
+      "note": "종료일이 공개되지 않았습니다.",
+      "official": {
+        "label": "카카오프렌즈 공식 인스타그램",
+        "url": "https://www.instagram.com/kakaofriends_official/"
+      },
+      "sources": [
+        {
+          "title": "카카오 - 카카오프렌즈 X 폼폼푸린 콜라보레이션 굿즈 출시",
+          "url": "https://www.kakaocorp.com/page/detail/12115"
+        },
+        {
+          "title": "워크투데이 - 폼폼푸린과 손잡고 K-농장 콜라보 굿즈 출시",
+          "url": "http://www.worktoday.co.kr/news/articleView.html?idxno=88201"
+        }
+      ]
+    },
+    {
+      "id": "vallop-kakaofriends-2026",
+      "title": "밸롭 × 카카오프렌즈 춘식이 팝업",
+      "ip": [
+        "카카오프렌즈",
+        "춘식이"
+      ],
+      "ipOrigin": "KR",
+      "brand": "밸롭 (Vallop)",
+      "category": "fashion",
+      "type": "팝업스토어",
+      "country": "KR",
+      "region": "대전 · 서울 마포",
+      "areas": [
+        "대전",
+        "홍대"
+      ],
+      "venue": "신세계백화점 대전점 (9.4~9.20) · AK플라자 홍대점 (9.5~9.18)",
+      "coords": {
+        "lat": 36.3752,
+        "lng": 127.3838,
+        "name": "대전신세계 Art & Science"
+      },
+      "startDate": "2026-09-04",
+      "endDate": "2026-09-20",
+      "hours": "백화점 운영시간에 준함",
+      "reservation": "현장 방문",
+      "summary": "춘식이 얼굴을 그대로 올린 지압 슬리퍼가 주인공. 카카오톡 선물하기에서 먼저 열고 공식몰과 팝업으로 넓혔습니다.",
+      "highlights": [
+        "춘식이 지압 슬리퍼 — 카카오톡 선물하기 선오픈",
+        "신세계백화점 대전점 9.4~9.20",
+        "AK플라자 홍대점 9.5~9.18"
+      ],
+      "note": "두 곳의 운영 기간이 다릅니다. 홍대점은 9월 18일까지예요.",
+      "official": {
+        "label": "카카오프렌즈 공식 인스타그램",
+        "url": "https://www.instagram.com/kakaofriends_official/"
+      },
+      "sources": [
+        {
+          "title": "일간스포츠 - 밸롭×카카오프렌즈 춘식이 지압슬리퍼",
+          "url": "https://isplus.com/article/view/isp202609010237"
+        }
       ]
     }
   ],
@@ -516,6 +704,7 @@
     "잠실·송파",
     "영등포",
     "부산",
+    "대전",
     "청주",
     "전국·온라인"
   ]

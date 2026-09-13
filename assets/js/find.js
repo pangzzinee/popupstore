@@ -142,6 +142,19 @@
     return line;
   }
 
+  // 같은 업종이 여러 건이면 카드가 똑같아 보인다. IP 이름으로 변종을 나눠 쓴다.
+  const ILL_VARIANTS = {
+    fashion: ['ill-fashion', 'ill-fashion2'],
+    food:    ['ill-food', 'ill-food2'],
+    cafe:    ['ill-cafe', 'ill-cafe2'],
+  };
+  function illFor(p) {
+    if (p.ill) return p.ill;
+    const list = ILL_VARIANTS[p.category];
+    if (!list) return `ill-${p.category}`;
+    return list[hueOf((p.ip || [])[0] || p.brand) % list.length];
+  }
+
   // p.image가 있으면 실제 사진, 없으면 자동 생성 카드
   function thumb(p, big) {
     const cat = state.catMap.get(p.category);
@@ -157,7 +170,7 @@
     ill.setAttribute('viewBox', '0 0 100 100');
     ill.setAttribute('aria-hidden', 'true');
     const use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
-    use.setAttribute('href', `#ill-${p.category}`);
+    use.setAttribute('href', `#${illFor(p)}`);
     ill.append(use);
     box.append(ill);
     // 로고는 여기 쓰지 않는다. 파비콘은 원본이 16~64px이라 키우면 뭉개진다.

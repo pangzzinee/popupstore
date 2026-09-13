@@ -3,239 +3,221 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>팝업 캘린더 — 캐릭터 콜라보 팝업 아카이브</title>
-  <meta name="description" content="캐릭터 IP와 브랜드가 함께 만든 팝업스토어·콜라보 일정을 한곳에서. 진행 중인 팝업, 오픈 예정, 지난 기록까지." />
+  <title>팝업 캘린더 — 내 최애가 팝업으로 나왔다!</title>
+  <meta name="description" content="캐릭터 × 브랜드 콜라보 팝업 일정을 한곳에서. 지금 열린 팝업, 곧 열릴 팝업, 굿즈와 위치까지 한눈에 확인하세요." />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎪</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&display=swap" />
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/landing.css" />
 </head>
-<body>
-  <svg class="ill-sprite" aria-hidden="true" focusable="false">
-    <defs>
-      <!-- 손으로 그린 듯 선을 흔드는 필터 -->
-      <filter id="crayon" x="-15%" y="-15%" width="130%" height="130%">
-        <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="11" result="noise" />
-        <feDisplacementMap in="SourceGraphic" in2="noise" scale="4"
-                           xChannelSelector="R" yChannelSelector="G" />
-      </filter>
-      <!-- 크레파스 특유의 거친 질감 -->
-      <filter id="grain" x="-15%" y="-15%" width="130%" height="130%">
-        <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" seed="3" result="g" />
-        <feColorMatrix in="g" type="saturate" values="0" result="gg" />
-        <feComponentTransfer in="gg" result="mask">
-          <feFuncA type="linear" slope="0.5" intercept="0.18" />
-        </feComponentTransfer>
-        <feComposite in="SourceGraphic" in2="mask" operator="in" />
-      </filter>
-    </defs>
-
-    <!-- 📚 출판·문구 : 쌓인 책 -->
-    <symbol id="ill-publish" viewBox="0 0 100 100">
-      <g fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M20 72 L79 70 L80 82 L21 84 Z" fill="currentColor" fill-opacity=".16" />
-        <path d="M26 71 L26 83 M34 71 L34 83" stroke-width="2.4" />
-        <path d="M24 56 L76 53 L78 69 L22 71 Z" fill="currentColor" fill-opacity=".1" />
-        <path d="M31 55 L32 70" stroke-width="2.4" />
-        <path d="M30 25 L50 31 L50 55 L30 49 Z" fill="currentColor" fill-opacity=".16" />
-        <path d="M70 24 L50 31 L50 55 L70 48 Z" fill="currentColor" fill-opacity=".08" />
-        <path d="M50 31 L50 55" />
-        <path d="M36 34 L44 36 M36 41 L44 43 M57 33 L64 31 M57 40 L64 38" stroke-width="2.2" />
-      </g>
-    </symbol>
-
-    <!-- 🥐 카페·베이커리 : 크루아상 -->
-    <symbol id="ill-cafe" viewBox="0 0 100 100">
-      <g fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M17 66 C18 47 33 33 51 33 C69 33 84 47 85 66 C79 70 72 66 68 62
-                 C63 68 56 68 51 63 C46 68 39 68 34 62 C30 66 23 70 17 66 Z"
-              fill="currentColor" fill-opacity=".17" />
-        <path d="M37 41 C38 49 38 56 34 62" stroke-width="2.6" />
-        <path d="M51 36 C51 46 51 54 51 63" stroke-width="2.6" />
-        <path d="M65 41 C64 49 64 56 68 62" stroke-width="2.6" />
-        <path d="M23 60 C22 53 25 47 29 44" stroke-width="2.2" />
-        <path d="M79 60 C80 53 77 47 73 44" stroke-width="2.2" />
-      </g>
-    </symbol>
-
-    <!-- 🍰 식음료 : 굿즈 병뚜껑 달린 음료병 -->
-    <symbol id="ill-food" viewBox="0 0 100 100">
-      <g fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M41 22 L60 21 L60 33 C60 39 67 42 67 52 L68 82 C68 86 65 88 61 88
-                 L41 89 C37 89 34 87 34 83 L33 53 C33 43 40 39 40 33 Z"
-              fill="currentColor" fill-opacity=".14" />
-        <path d="M39 18 C39 15 42 14 50 14 C58 13 62 15 62 18 C62 21 58 23 50 23 C42 23 39 21 39 18 Z"
-              fill="currentColor" fill-opacity=".26" />
-        <path d="M34 57 L67 56 M35 72 L68 71" stroke-width="2.4" />
-        <path d="M43 63 C45 61 48 61 50 63 M56 62 C58 60 61 60 63 62" stroke-width="2.2" />
-        <circle cx="46" cy="18" r="1.6" fill="currentColor" stroke="none" />
-        <circle cx="55" cy="18" r="1.6" fill="currentColor" stroke="none" />
-      </g>
-    </symbol>
-
-    <!-- 🏪 편의점·유통 : 차양이 있는 가게 -->
-    <symbol id="ill-cvs" viewBox="0 0 100 100">
-      <g fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M19 44 L81 42 L83 86 L21 88 Z" fill="currentColor" fill-opacity=".1" />
-        <path d="M16 43 L24 26 L77 24 L84 41 Z" fill="currentColor" fill-opacity=".22" />
-        <path d="M33 25 L30 42 M50 25 L50 42 M67 24 L70 42" stroke-width="2.4" />
-        <path d="M30 57 L47 56 L47 73 L30 74 Z" stroke-width="2.6" />
-        <path d="M57 58 L74 57 L75 87 L58 88 Z" stroke-width="2.6" fill="currentColor" fill-opacity=".12" />
-        <path d="M62 72 L63 76" stroke-width="2.4" />
-      </g>
-    </symbol>
-
-    <!-- 💄 뷰티 : 립스틱 -->
-    <symbol id="ill-beauty" viewBox="0 0 100 100">
-      <g fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M38 47 L64 44 L67 86 C67 89 65 90 62 90 L42 92 C39 92 37 90 37 87 Z"
-              fill="currentColor" fill-opacity=".13" />
-        <path d="M37 58 L66 55" stroke-width="2.6" />
-        <path d="M41 30 C41 24 47 14 55 13 C61 13 63 18 63 24 L64 44 L39 47 Z"
-              fill="currentColor" fill-opacity=".3" />
-        <path d="M45 70 C47 68 50 68 52 70" stroke-width="2.2" />
-        <path d="M75 30 C78 33 78 37 75 40 M78 24 L80 26" stroke-width="2.2" />
-      </g>
-    </symbol>
-
-    <!-- 👜 패션·잡화 : 폰 케이스 -->
-    <symbol id="ill-fashion" viewBox="0 0 100 100">
-      <g fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M33 13 L68 11 C73 11 76 14 76 19 L79 82 C79 87 76 90 71 90
-                 L36 92 C31 92 28 89 28 84 L25 21 C25 16 28 13 33 13 Z"
-              fill="currentColor" fill-opacity=".13" />
-        <path d="M37 22 L60 21 C64 21 66 23 66 27 L67 36 C67 40 65 42 61 42
-                 L38 43 C34 43 32 41 32 37 L31 28 C31 24 33 22 37 22 Z"
-              fill="currentColor" fill-opacity=".22" />
-        <circle cx="41" cy="31" r="4.4" stroke-width="2.8" />
-        <circle cx="56" cy="30" r="4.4" stroke-width="2.8" />
-        <path d="M38 58 C44 54 52 54 58 57 M40 69 C46 66 53 66 59 68" stroke-width="2.4" />
-      </g>
-    </symbol>
-
-    <!-- ⚽ 스포츠 : 공 -->
-    <symbol id="ill-sports" viewBox="0 0 100 100">
-      <g fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="50" cy="52" r="34" fill="currentColor" fill-opacity=".12" />
-        <path d="M50 33 L64 43 L59 60 L41 60 L36 43 Z" fill="currentColor" fill-opacity=".3" />
-        <path d="M50 33 L50 19 M64 43 L78 38 M59 60 L68 73 M41 60 L32 73 M36 43 L22 38" stroke-width="2.6" />
-        <path d="M22 38 C18 45 17 53 19 61 M78 38 C82 45 83 53 81 61" stroke-width="2.2" />
-      </g>
-    </symbol>
-
-    <!-- 🎪 전시·엔터 : 천막 -->
-    <symbol id="ill-culture" viewBox="0 0 100 100">
-      <g fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M50 21 C31 27 19 42 17 58 L83 55 C80 39 68 26 50 21 Z"
-              fill="currentColor" fill-opacity=".2" />
-        <path d="M17 58 L21 86 L79 83 L83 55 Z" fill="currentColor" fill-opacity=".09" />
-        <path d="M50 22 L50 84" stroke-width="2.6" />
-        <path d="M32 27 C33 42 32 60 30 85 M68 27 C67 42 68 59 70 83" stroke-width="2.4" />
-        <path d="M50 60 C43 60 39 68 39 85 M50 60 C57 60 61 67 61 84" stroke-width="2.6" />
-        <path d="M50 21 L50 11 L62 15 L50 19" stroke-width="2.6" fill="currentColor" fill-opacity=".3" />
-      </g>
-    </symbol>
-  </svg>
-
+<body data-page="home">
   <a class="skip-link" href="#main">본문으로 건너뛰기</a>
 
-  <header class="site-header">
-    <div class="wrap header-inner">
-      <div class="brand">
-        <span class="brand-mark" aria-hidden="true">🎪</span>
-        <div>
-          <h1 class="brand-name">팝업 캘린더</h1>
-          <p class="brand-tag">캐릭터 × 브랜드 콜라보 팝업을 한눈에</p>
-        </div>
-      </div>
-      <p class="updated">업데이트 <time id="updatedAt">—</time></p>
-    </div>
-  </header>
-
   <main id="main">
-    <section class="wrap hero">
-      <h2 class="hero-title">지금 어떤 캐릭터가<br />어디서 팝업을 열고 있을까?</h2>
-      <p class="hero-desc">
-        민음사 × 오늘의귀여움처럼 출판사가 캐릭터와 책을 만들고, 엔제리너스 × 빵고미처럼 카페가 캐릭터 빵을 파는 —
-        캐릭터 IP가 브랜드와 손잡고 만든 팝업과 콜라보를 모아 기록합니다.
+
+    <!-- ===== 히어로 ===== -->
+    <section class="hero">
+      <div class="blobs" aria-hidden="true">
+        <span class="blob blob-a"></span>
+        <span class="blob blob-b"></span>
+        <span class="blob blob-c"></span>
+      </div>
+
+      <div class="stickers" aria-hidden="true">
+        <span class="sticker s1">🧁</span>
+        <span class="sticker s2">🎀</span>
+        <span class="sticker s3">🧸</span>
+        <span class="sticker s4">🍓</span>
+        <span class="sticker s5">✨</span>
+        <span class="sticker s6">🐰</span>
+      </div>
+
+      <div class="wrap hero-inner">
+        <p class="hero-badge">
+          <span class="dot" aria-hidden="true"></span>
+          지금 <b data-live-count>—</b>곳에서 팝업이 열리고 있어요
+        </p>
+
+        <h1 class="hero-title">
+          <span class="line l1">내 최애가</span>
+          <span class="line l2">팝업으로 <em>나왔다!</em></span>
+        </h1>
+
+        <p class="hero-sub">
+          좋아하는 캐릭터가 책이 되고, 빵이 되고, 키링이 되어 나타나는 순간.<br />
+          그 반가운 소식을 놓치지 않도록 전부 모아뒀어요.
+        </p>
+
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="find.html">
+            <span>지금 열린 팝업 보기</span>
+            <span aria-hidden="true">→</span>
+          </a>
+          <a class="btn btn-ghost" href="find.html#calendar">📅 이번 달 캘린더</a>
+        </div>
+
+        <div class="hero-proof">
+          <div class="proof-item"><b data-count="21">0</b><span>기록한 콜라보</span></div>
+          <div class="proof-item"><b data-count="8">0</b><span>업종</span></div>
+          <div class="proof-item"><b data-count="10">0</b><span>지역</span></div>
+        </div>
+      </div>
+
+      <div class="scroll-hint" aria-hidden="true">
+        <span>아래로</span>
+        <span class="mouse"><i></i></span>
+      </div>
+    </section>
+
+    <!-- ===== 흐르는 띠 ===== -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>🎀 산리오캐릭터즈</span><span>📚 민음사</span><span>🥐 빵고미</span>
+        <span>🐶 짱구는 못말려</span><span>🍓 가나디</span><span>🐧 피너츠</span>
+        <span>⚔️ 진격의 거인</span><span>🧁 오늘의귀여움</span><span>🍞 브레드이발소</span>
+        <span>🎀 산리오캐릭터즈</span><span>📚 민음사</span><span>🥐 빵고미</span>
+        <span>🐶 짱구는 못말려</span><span>🍓 가나디</span><span>🐧 피너츠</span>
+        <span>⚔️ 진격의 거인</span><span>🧁 오늘의귀여움</span><span>🍞 브레드이발소</span>
+      </div>
+    </div>
+
+    <!-- ===== 공감 스토리 ===== -->
+    <section class="story wrap">
+      <h2 class="sec-title reveal">
+        <span class="eyebrow">이런 적, 있으시죠?</span>
+        팝업 소식은 늘<br /><em>한 발 늦게</em> 도착해요
+      </h2>
+
+      <ol class="story-steps">
+        <li class="step reveal" style="--d:0ms">
+          <span class="step-num">01</span>
+          <span class="step-face">😳</span>
+          <h3>“어? 내 최애가 팝업 한대!”</h3>
+          <p>친구 스토리에서 우연히 발견. 심장이 먼저 반응합니다.</p>
+        </li>
+        <li class="step reveal" style="--d:110ms">
+          <span class="step-num">02</span>
+          <span class="step-face">🫠</span>
+          <h3>“근데 어디서? 언제까지?”</h3>
+          <p>계정 찾고, 공지 뒤지고, 블로그 후기까지. 정보는 늘 흩어져 있어요.</p>
+        </li>
+        <li class="step reveal" style="--d:220ms">
+          <span class="step-num">03</span>
+          <span class="step-face">😭</span>
+          <h3>“…어제 끝났대.”</h3>
+          <p>겨우 찾았더니 이미 지난 팝업. 굿즈는 이미 품절입니다.</p>
+        </li>
+      </ol>
+
+      <p class="story-turn reveal">
+        <span class="turn-mark">그래서 만들었어요</span>
+        흩어진 팝업 소식을 <b>한곳에</b> 모았습니다
       </p>
-      <div class="stats" id="stats" role="status" aria-live="polite"></div>
     </section>
 
-    <section class="wrap controls" aria-label="검색 및 필터">
-      <div class="control-row">
-        <div class="search-box">
-          <span class="search-icon" aria-hidden="true">🔍</span>
-          <input type="search" id="search" placeholder="캐릭터, 브랜드, 장소로 검색 (예: 산리오, 더현대)"
-                 aria-label="캐릭터, 브랜드, 장소 검색" autocomplete="off" />
+    <!-- ===== 한곳에서 보는 장점 ===== -->
+    <section class="feat">
+      <div class="wrap">
+        <h2 class="sec-title center reveal">
+          <span class="eyebrow">한곳에서 본다는 것</span>
+          찾는 시간은 줄이고<br /><em>가는 즐거움</em>만 남겨요
+        </h2>
+
+        <div class="feat-grid">
+          <article class="fcard big reveal" style="--d:0ms">
+            <div class="fcard-visual v-calendar" aria-hidden="true">
+              <div class="mini-cal">
+                <span class="mc-dot"></span><span class="mc-dot"></span><span class="mc-dot on"></span>
+                <span class="mc-dot"></span><span class="mc-dot on"></span><span class="mc-dot"></span>
+                <span class="mc-dot"></span><span class="mc-dot on"></span><span class="mc-dot"></span>
+                <span class="mc-dot on"></span><span class="mc-dot"></span><span class="mc-dot"></span>
+              </div>
+            </div>
+            <h3>진행 중 · 오픈 예정이 한눈에</h3>
+            <p>오늘 날짜를 기준으로 상태와 남은 날짜를 자동으로 계산해요.
+               “5일 남음”, “D-6”처럼 보이니까 급한 것부터 챙길 수 있어요.</p>
+          </article>
+
+          <article class="fcard reveal" style="--d:90ms">
+            <div class="fcard-visual v-filter" aria-hidden="true">
+              <span class="chip-demo c1">📚 출판</span>
+              <span class="chip-demo c2">🥐 카페</span>
+              <span class="chip-demo c3">💄 뷰티</span>
+              <span class="chip-demo c4">🎪 전시</span>
+            </div>
+            <h3>업종·지역으로 쏙쏙</h3>
+            <p>성수만, 뷰티만, 진행 중인 것만. 원하는 조건으로 바로 걸러요.</p>
+          </article>
+
+          <article class="fcard reveal" style="--d:180ms">
+            <div class="fcard-visual v-near" aria-hidden="true">
+              <span class="pin">📍</span>
+              <span class="ripple r1"></span><span class="ripple r2"></span>
+            </div>
+            <h3>내 주변 팝업</h3>
+            <p>사는 곳을 등록해두면 가까운 순으로 보여드려요. 지도로 바로 길찾기까지.</p>
+          </article>
+
+          <article class="fcard reveal" style="--d:270ms">
+            <div class="fcard-visual v-link" aria-hidden="true">
+              <span class="link-card lc1">📷</span>
+              <span class="link-card lc2">🎫</span>
+            </div>
+            <h3>공식 페이지 바로가기</h3>
+            <p>포스터, 예약 링크, 굿즈 정보가 있는 공식 계정으로 한 번에 이동해요.</p>
+          </article>
+
+          <article class="fcard wide reveal" style="--d:360ms">
+            <div class="fcard-text">
+              <h3>출처를 함께 적어둬요</h3>
+              <p>기간이 자료마다 다르면 “엇갈린다”고 솔직하게 적습니다.
+                 확인한 기사와 공지 링크도 같이 두니까, 믿고 움직일 수 있어요.</p>
+            </div>
+            <div class="fcard-visual v-src" aria-hidden="true">
+              <span class="src-line"></span><span class="src-line short"></span><span class="src-line"></span>
+            </div>
+          </article>
         </div>
-        <div class="view-toggle" role="tablist" aria-label="보기 방식">
-          <button type="button" role="tab" class="view-btn is-active" data-view="list" aria-selected="true">목록</button>
-          <button type="button" role="tab" class="view-btn" data-view="calendar" aria-selected="false">캘린더</button>
+      </div>
+    </section>
+
+    <!-- ===== 지금 진행 중 미리보기 ===== -->
+    <section class="live wrap">
+      <div class="live-head reveal">
+        <h2 class="sec-title">
+          <span class="eyebrow">🔥 실시간</span>
+          지금 열려 있는 팝업
+        </h2>
+        <a class="btn btn-ghost btn-sm" href="find.html">전체 보기 →</a>
+      </div>
+      <div class="live-grid" id="liveGrid">
+        <div class="live-skeleton"></div>
+        <div class="live-skeleton"></div>
+        <div class="live-skeleton"></div>
+        <div class="live-skeleton"></div>
+      </div>
+    </section>
+
+    <!-- ===== 마무리 CTA ===== -->
+    <section class="wrap">
+      <div class="cta reveal">
+        <span class="cta-emoji" aria-hidden="true">🎪</span>
+        <h2>최애의 팝업, 이제 놓치지 마요</h2>
+        <p>지금 열린 팝업부터 확인해볼까요?</p>
+        <div class="cta-actions">
+          <a class="btn btn-primary" href="find.html">팝업 찾으러 가기 →</a>
+          <a class="btn btn-ghost" href="my.html">내 정보 설정하기</a>
         </div>
       </div>
-
-      <div class="filter-group" role="group" aria-label="진행 상태 필터">
-        <span class="filter-label">상태</span>
-        <div class="chips" id="statusChips"></div>
-      </div>
-
-      <div class="filter-group" role="group" aria-label="업종 필터">
-        <span class="filter-label">업종</span>
-        <div class="chips" id="categoryChips"></div>
-      </div>
-
-      <div class="filter-group" role="group" aria-label="지역 필터">
-        <span class="filter-label">지역</span>
-        <div class="chips" id="areaChips"></div>
-      </div>
     </section>
 
-    <section class="wrap view" id="listView" aria-label="팝업 목록">
-      <div class="list-head">
-        <p class="result-count" id="resultCount"></p>
-        <label class="sort-label">
-          정렬
-          <select id="sort" aria-label="정렬 기준">
-            <option value="soonest">임박한 순</option>
-            <option value="latest">최근 시작한 순</option>
-            <option value="name">이름순</option>
-          </select>
-        </label>
-      </div>
-      <div class="cards" id="cards"></div>
-      <p class="empty" id="empty" hidden>조건에 맞는 팝업이 없어요. 필터를 바꿔보세요.</p>
-    </section>
-
-    <section class="wrap view" id="calendarView" aria-label="팝업 캘린더" hidden>
-      <div class="cal-head">
-        <button type="button" class="cal-nav" id="prevMonth" aria-label="이전 달">‹</button>
-        <h3 class="cal-title" id="calTitle" aria-live="polite"></h3>
-        <button type="button" class="cal-nav" id="nextMonth" aria-label="다음 달">›</button>
-        <button type="button" class="cal-today" id="todayBtn">이번 달</button>
-      </div>
-      <div class="cal-grid" id="calGrid"></div>
-      <p class="cal-note">※ 기간이 확인되지 않은 상시 콜라보는 캘린더에 표시되지 않습니다. 목록 보기에서 확인하세요.</p>
-    </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="wrap">
-      <p class="disclaimer" id="disclaimer"></p>
-      <p class="footer-meta">
-        데이터는 <code>data/popups.json</code>에 정리되어 있습니다. 항목 추가 방법은
-        <a href="https://github.com/pangzzinee/popupstore/blob/main/data/README.md">data/README.md</a>를 참고하세요.
-      </p>
-    </div>
-  </footer>
-
-  <div class="modal" id="modal" hidden role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <div class="modal-backdrop" data-close></div>
-    <div class="modal-panel">
-      <button type="button" class="modal-close" data-close aria-label="닫기">✕</button>
-      <div id="modalBody"></div>
-    </div>
-  </div>
-
-  <script src="assets/js/app.js"></script>
+  <script src="assets/js/sprite.js"></script>
+  <script src="assets/js/ui.js"></script>
+  <script src="assets/js/landing.js"></script>
 </body>
 </html>

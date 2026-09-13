@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>팝업 찾기 — 팝업 캘린더</title>
+  <meta name="description" content="진행 중인 팝업, 곧 열릴 팝업을 업종·지역·캐릭터로 찾아보세요. 캘린더로도 볼 수 있어요." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎪</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&display=swap" />
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/find.css" />
+</head>
+<body data-page="find">
+  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+
+  <main id="main">
+    <section class="wrap find-head">
+      <h1 class="find-title">지금 어떤 캐릭터가<br /><em>어디서</em> 팝업을 열고 있을까?</h1>
+      <p class="find-desc">
+        업종과 지역으로 걸러 보고, 캘린더로 날짜를 확인하세요.
+        카드를 누르면 굿즈 목록과 공식 페이지 링크가 나와요.
+      </p>
+      <div class="stats" id="stats" role="status" aria-live="polite"></div>
+    </section>
+
+    <section class="wrap controls" aria-label="검색 및 필터">
+      <div class="control-row">
+        <div class="search-box">
+          <span class="search-icon" aria-hidden="true">🔍</span>
+          <input type="search" id="search" placeholder="캐릭터, 브랜드, 장소로 검색 (예: 산리오, 더현대)"
+                 aria-label="캐릭터, 브랜드, 장소 검색" autocomplete="off" />
+        </div>
+        <div class="view-toggle" role="tablist" aria-label="보기 방식">
+          <button type="button" role="tab" class="view-btn is-active" data-view="list" aria-selected="true">목록</button>
+          <button type="button" role="tab" class="view-btn" data-view="calendar" aria-selected="false">캘린더</button>
+        </div>
+      </div>
+
+      <div class="filter-group" role="group" aria-label="진행 상태 필터">
+        <span class="filter-label">상태</span>
+        <div class="chips" id="statusChips"></div>
+      </div>
+
+      <div class="filter-group" role="group" aria-label="업종 필터">
+        <span class="filter-label">업종</span>
+        <div class="chips" id="categoryChips"></div>
+      </div>
+
+      <div class="filter-group" role="group" aria-label="지역 필터">
+        <span class="filter-label">지역</span>
+        <div class="chips" id="areaChips"></div>
+      </div>
+    </section>
+
+    <section class="wrap view" id="listView" aria-label="팝업 목록">
+      <div class="list-head">
+        <p class="result-count" id="resultCount"></p>
+        <label class="sort-label">
+          정렬
+          <select id="sort" aria-label="정렬 기준">
+            <option value="soonest">임박한 순</option>
+            <option value="latest">최근 시작한 순</option>
+            <option value="name">이름순</option>
+          </select>
+        </label>
+      </div>
+      <div class="cards" id="cards"></div>
+      <p class="empty" id="empty" hidden>조건에 맞는 팝업이 없어요. 필터를 바꿔보세요.</p>
+    </section>
+
+    <section class="wrap view" id="calendarView" aria-label="팝업 캘린더" hidden>
+      <div class="cal-head">
+        <button type="button" class="cal-nav" id="prevMonth" aria-label="이전 달">‹</button>
+        <h3 class="cal-title" id="calTitle" aria-live="polite"></h3>
+        <button type="button" class="cal-nav" id="nextMonth" aria-label="다음 달">›</button>
+        <button type="button" class="cal-today" id="todayBtn">이번 달</button>
+      </div>
+      <div class="cal-grid" id="calGrid"></div>
+      <p class="cal-note">※ 기간이 확인되지 않은 상시 콜라보는 캘린더에 표시되지 않습니다. 목록 보기에서 확인하세요.</p>
+    </section>
+
+  </main>
+
+  <div class="modal" id="modal" hidden role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-panel">
+      <button type="button" class="modal-close" data-close aria-label="닫기">✕</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <script src="assets/js/sprite.js"></script>
+  <script src="assets/js/ui.js"></script>
+  <script src="assets/js/find.js"></script>
+</body>
+</html>

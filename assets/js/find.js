@@ -564,8 +564,11 @@
     state.categories = data.categories || [];
     state.areas = data.areas || [];
     state.categories.forEach((c) => state.catMap.set(c.id, c));
-    $('#updatedAt').textContent = data.meta?.updatedAt || '';
-    $('#disclaimer').textContent = data.meta?.disclaimer || '';
+    // 이 두 곳은 페이지에 따라 없을 수 있다
+    const stamp = $('#updatedAt');
+    if (stamp) stamp.textContent = data.meta?.updatedAt || '';
+    const note = $('#disclaimer');
+    if (note) note.textContent = data.meta?.disclaimer || '';
 
     bind();
     render();
